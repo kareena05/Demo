@@ -2,7 +2,7 @@
 
 
 ====================================Day 1=======================================
-c# intro
+c# introduction
 c# datatypes and variables
 structs
 enum
