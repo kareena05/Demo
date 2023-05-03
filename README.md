@@ -4,41 +4,41 @@
 
 # Day 1
 
-*-c# introduction*\n
+*-c# introduction*
 
-*-c# datatypes and variables*\n
+*-c# datatypes and variables*
 
-*-structs*\n
+*-structs*
 
-*-enum*\n
+*-enum*
 
-*-class*\n 
+*-class* 
 
-*-constructor and its types*\n 
+*-constructor and its types* 
 
 # Day 2
 
 
 
-*-c# classes and objects*\n
+*-c# classes and objects*
 
-*-methods*\n
+*-methods*
 
-*-method overloading*\n
+*-method overloading*
 
-*-static class*\n 
+*-static class* 
 
-*-expressions,statements,operators*\n 
+*-expressions,statements,operators* 
 
-*-if-else ,for loop,foreach loop,do while, while loop*\n 
+*-if-else ,for loop,foreach loop,do while, while loop* 
 
-*-switch case*\n 
+*-switch case* 
 
-*-read about interface and abstract class*\n
+*-read about interface and abstract class*
 
-*-arrays and its types*\n
+*-arrays and its types*
 
-*-all the above topics with practice*\n  
+*-all the above topics with practice*  
 
 
 
