@@ -1,5 +1,6 @@
 # Demo
 
+<<<<<<< HEAD
 
 # Day 1
 
@@ -25,6 +26,8 @@
 
 *-method overloading*\n
 
+*-static class*\n 
+
 *-expressions,statements,operators*\n 
 
 *-if-else ,for loop,foreach loop,do while, while loop*\n 
@@ -38,3 +41,5 @@
 *-all the above topics with practice*\n  
 
 
+
+>>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
