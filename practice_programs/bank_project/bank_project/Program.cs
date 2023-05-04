@@ -42,15 +42,34 @@ namespace bank_project
     }
     internal class Program
     {
+        static int Add(int x,int y)
+        {
+            return x + y;
+        }
+        static int Subt(int a,int b)
+        {
+            return  a + b;
+        }
+        delegate int mydel(int s1, int s2);
+
+        static int Call_delegate(int m,int n,mydel func)
+        {
+            return func(m, n);
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
+            Console.WriteLine(Add(2, 5));
+            Console.WriteLine(Call_delegate(10,20,Add));
+            Console.WriteLine(Call_delegate(10, 20, (int x,int y) =>  x + y));
+
+            return;
             string[] bank_names = new string[3] { "HDFC", "ICICI", "SBI" };
             int[] bank_ids = new int[3] {121,122,123};
 
             Registeration[] arr = new Registeration[5];
             int arr_cnt = 0;
-            Registeration obj1 = new Registeration();
+            
 
             char ch = 'y';
             do
@@ -73,7 +92,7 @@ namespace bank_project
                         int  bank = Convert.ToInt32(Console.ReadLine());
                         DateTime date_created = DateTime.Now;
                         arr[arr_cnt] = new Registeration();
-                        arr[arr_cnt].OpenAccount(arr_cnt,customer_name, bank_ids[bank], bank_names[bank],date_created);
+                        arr[arr_cnt].OpenAccount(arr_cnt,customer_name,bank_ids[bank], bank_names[bank],date_created);
                         
                         Console.WriteLine("\t\t Account created Successfully ! Your Customer id is:{0} ",arr_cnt);
                         arr_cnt++;
@@ -149,7 +168,6 @@ namespace bank_project
 
 
 
-            
             
             
             

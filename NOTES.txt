@@ -1,0 +1,41 @@
+
+===========================================Day 1=======================================================:
+
+c# intro
+c# datatypes and variables
+structs
+enum
+class
+constructor and its types
+
+int vs short-> 4byte ,2byte
+float,double,decimal = F,D,M main difference is precision ,F=7,D=15,M=28
+string s=@"abc" -> does not require extra backslash for escaping and can accept multiline string
+string s2="abc" -> will require a closing " in a same line,if you press enter it will concatenate,requires extra backslash for escaping 
+enum:
+step1: define enum
+step2: create variable of defined enum
+enum is declared outside the class and doesnot contain any space but can contain special character
+
+difference:
+String vs string
+struct enum record classes
+struct and class => struct is value type & stored in stack  class=> reference type & stored in heap
+inheritance is not supported in struct
+default constructor is not supported in struct
+
+	static class can not be inherited
+	static class has no instance
+	static class has static members only-> static fields and static methods
+
+	static methods can only modify the static fields
+
+	abstarct class is a blueprint for other classes
+	a derived class must implement all its methods
+
+	A static constructor is used to initialize the static data members,
+	the normal constructor (non-static constructor) is used to initialize the non-static data members.
+
+	str_name.ToUpper()
+	str.name.ToLower()
+	string strRes = str1.Insert(2, "bbb")

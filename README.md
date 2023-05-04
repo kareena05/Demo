@@ -42,5 +42,39 @@
 *-all the above topics with practice*  
 
 
+# Day 2
+
+
+*Git and Github with practice*
+
+*-c# classes and objects*
+
+*-methods*
+
+*-method overloading*
+
+*-static class* # Day 2
+
+
+*Git and Github with practice*
+
+*-c# classes and objects*
+
+*-methods*
+
+*-method overloading*
+
+*-static class* 
+
+# Day 3
+
+
+*-bank project*
+
+*-delegates and lambdas*
+
+*-type system c#*
+
+
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
