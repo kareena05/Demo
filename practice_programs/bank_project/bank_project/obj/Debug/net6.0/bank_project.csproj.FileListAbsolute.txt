@@ -1,0 +1,15 @@
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\bin\Debug\net6.0\bank_project.exe
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\bin\Debug\net6.0\bank_project.dll
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.csproj.AssemblyReference.cache
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.AssemblyInfoInputs.cache
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.AssemblyInfo.cs
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.csproj.CoreCompileInputs.cache
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.dll
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\refint\bank_project.dll
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.pdb
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\bin\Debug\net6.0\bank_project.deps.json
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\bin\Debug\net6.0\bank_project.runtimeconfig.json
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\bin\Debug\net6.0\bank_project.pdb
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\bank_project.genruntimeconfig.cache
+C:\Users\NBDPHP0064\Documents\kareena_github\Demo\practice_programs\bank_project\bank_project\obj\Debug\net6.0\ref\bank_project.dll
