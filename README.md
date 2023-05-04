@@ -19,6 +19,7 @@
 # Day 2
 
 
+*Git and Github with practice*
 
 *-c# classes and objects*
 
