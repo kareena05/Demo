@@ -12,12 +12,14 @@ namespace linq_practice_with_class
             public string Name { get; set; }
             public int Score { get; set; }
 
+            
 
         }
         class OtherInfo
         {
             public int Oid { get; set; }
             public int Salary { get; set; }
+            public List<string> Langs { get; set; }
         }
 
 
@@ -34,9 +36,9 @@ namespace linq_practice_with_class
             list.Add(new Demo { Id = 27, Name = "nick", Score = 42 });
 
             List<OtherInfo> olist = new List<OtherInfo>();
-            olist.Add(new OtherInfo { Oid = 21,Salary=25000 });
-            olist.Add(new OtherInfo { Oid = 26, Salary = 34000 });
-            olist.Add(new OtherInfo { Oid = 27, Salary = 10000 });
+            olist.Add(new OtherInfo { Oid = 21, Salary = 25000,Langs=new List<string> { "c++","java"} });
+            olist.Add(new OtherInfo { Oid = 26, Salary = 34000, Langs = new List<string> { "PHP", "c#","python" } });
+            olist.Add(new OtherInfo { Oid = 27, Salary = 10000 , Langs = new List<string> { "c", "Go" } });
 
             int[] ids = new int[3] { 21, 24, 25 };
             list.Where(a => ids.Contains(a.Id)).Select(a => $"{a.Id} => {a.Name}").ToList().
@@ -136,7 +138,8 @@ namespace linq_practice_with_class
                 Console.WriteLine(indexer.new_id+"\t"+indexer.new_name+"\t" +indexer.salary);
             }
 
-
+            Console.WriteLine("Select Many");
+            olist.SelectMany(a => a.Langs).ToList().ForEach(a => Console.WriteLine(a));
         }
     }
 }
