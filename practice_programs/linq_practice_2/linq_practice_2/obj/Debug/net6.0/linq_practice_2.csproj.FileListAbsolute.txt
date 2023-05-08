@@ -1,0 +1,15 @@
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\bin\Debug\net6.0\linq_practice_2.exe
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\bin\Debug\net6.0\linq_practice_2.deps.json
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\bin\Debug\net6.0\linq_practice_2.runtimeconfig.json
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\bin\Debug\net6.0\linq_practice_2.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\bin\Debug\net6.0\linq_practice_2.pdb
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.csproj.AssemblyReference.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.AssemblyInfoInputs.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.AssemblyInfo.cs
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.csproj.CoreCompileInputs.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\refint\linq_practice_2.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.pdb
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\linq_practice_2.genruntimeconfig.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_2\obj\Debug\net6.0\ref\linq_practice_2.dll

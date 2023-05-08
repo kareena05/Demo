@@ -1,0 +1,15 @@
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\bin\Debug\net6.0\linq_practice_with_class.exe
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\bin\Debug\net6.0\linq_practice_with_class.deps.json
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\bin\Debug\net6.0\linq_practice_with_class.runtimeconfig.json
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\bin\Debug\net6.0\linq_practice_with_class.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\bin\Debug\net6.0\linq_practice_with_class.pdb
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.csproj.AssemblyReference.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.AssemblyInfoInputs.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.AssemblyInfo.cs
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.csproj.CoreCompileInputs.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\refint\linq_practice_with_class.dll
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.pdb
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\linq_practice_with_class.genruntimeconfig.cache
+D:\Git Projects\Demo\practice_programs\linq_practice_2\linq_practice_with_class\obj\Debug\net6.0\ref\linq_practice_with_class.dll
