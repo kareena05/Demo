@@ -21,7 +21,7 @@ difference:
 String vs string
 struct enum record classes
 struct and class => struct is value type & stored in stack  class=> reference type & stored in heap
-inheritance is not supported in struct
+inheritance is supported in struct
 default constructor is not supported in struct
 
 	static class can not be inherited

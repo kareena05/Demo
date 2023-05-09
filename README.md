@@ -75,6 +75,22 @@
 
 *-type system c#*
 
+# Day 4
+
+
+*-Generics*
+
+# Day 5
+
+
+*-LINQS*
+
+
+# Day 6
+
+
+*-MYSQL*
+
 
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
