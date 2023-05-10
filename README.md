@@ -91,6 +91,10 @@
 
 *-MYSQL*
 
+# Day 7
+
+
+*-MYSQL practice with queries*
 
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
