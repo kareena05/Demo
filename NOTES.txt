@@ -39,3 +39,8 @@ default constructor is not supported in struct
 	str_name.ToUpper()
 	str.name.ToLower()
 	string strRes = str1.Insert(2, "bbb")
+
+
+
+
+

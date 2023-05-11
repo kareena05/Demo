@@ -244,3 +244,137 @@ joins queries
 -- ON d.manager_id = m.employee_id
 -- WHERE DATEDIFF(NOW(),HIRE_DATE)/365>15;
 
+
+
+STORED PROCEDURES
+
+
+-- IN parameter
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_employee`(in age int)
+BEGIN
+SELECT * FROM employee WHERE employee.age =age;
+/*i was able to update */
+/*UPDATE  employee SET age=1 WHERE emp_id=1;*/
+END
+
+
+-- IN AND OUT BOTH PARAMERTERS
+CREATE DEFINER=`root`@`localhost` PROCEDURE `get_emp_count`( IN age INT ,OUT records INT)
+BEGIN
+SELECT COUNT(*) INTO records FROM employee WHERE employee.age = age;
+END
+
+--INOUT PARAMETER
+-- INOUT parameter must exist and have value before passing it into procedure and will have value as a result of execution
+CREATE DEFINER=`root`@`localhost` PROCEDURE `increment`(INOUT param INT)
+BEGIN
+SET param = param +1;
+END
+
+--CALLING STORED PROCEDURE
+CALL get_emp_count(32,@result);
+SELECT @result AS numberOfRecords;
+
+CALL get_employee(32);
+
+
+SET @val = 10;
+CALL increment(@val);
+SELECT @val as valuess;
+
+TRIGGERS
+
+
+USE practice;
+DELIMITER //
+CREATE trigger upper_fname
+BEFORE INSERT 
+ON practice.employee
+FOR EACH ROW
+BEGIN
+SET NEW.emp_name = upper(NEW.emp_name);
+END//
+
+DELIMITER //
+CREATE trigger validate_age
+BEFORE INSERT 
+ON practice.employee
+FOR EACH ROW
+BEGIN
+IF NEW.age <10 THEN 
+SET NEW.emp_age = 18;
+END IF;
+END//
+
+
+DROP TRIGGER  practice.validate_age;
+
+
+DELIMITER //
+CREATE trigger validate_age
+BEFORE INSERT 
+ON practice.employee
+FOR EACH ROW
+BEGIN
+IF NEW.age <10 THEN 
+SET NEW.age = 18;
+END IF;
+END//
+
+DELIMITER //
+CREATE trigger name_upper_update
+BEFORE UPDATE
+ON practice.employee
+FOR EACH ROW
+BEGIN
+
+SET NEW.emp_name = upper(NEW.emp_name);
+
+END//
+
+
+INSERT INTO employee VALUES(NULL,"rohan","2000-09-30",44000,23);
+INSERT INTO employee VALUES(NULL,"Sofiya","2001-05-26",26000,-2);
+DELETE FROM employee WHERE emp_name ="rohan";
+
+
+
+SELECT emp_name,experience_function(birth_date) AS experience FROM employee;
+
+call get_employee(29);
+
+
+
+------------ALTERING  INDEX-------------
+
+ALTER TABLE tbl_name ADD INDEX index_name (column_list)
+ALTER TABLE testalter_tbl DROP INDEX (c);
+
+
+CREATE [OR REPLACE] VIEW view_name AS    
+SELECT columns    
+FROM tables    
+[WHERE conditions];    
+
+
+SELECT * FROM view_name; 
+
+
+ALTER VIEW View_name AS
+SELECT columns    
+FROM table    
+WHERE conditions;    
+
+DROP VIEW [IF EXISTS] view_name;    
+
+
+we can call a function in stored procedures while functions can not call a stored procedures
+Functions are not allowed to change anything,
+CREATE DEFINER=`root`@`localhost` FUNCTION `experience_function`( start_date date ) RETURNS int
+    DETERMINISTIC
+BEGIN
+-- calculating experience of an employee
+DECLARE crnt_date date;
+SELECT current_date() into crnt_date;
+RETURN year(crnt_date)-year(start_date);
+END

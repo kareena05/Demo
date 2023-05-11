@@ -1,0 +1,71 @@
+dotnet --info
+
+dontnet new webapi --name myWebApi -> create webapi project
+
+dotnet build -> to build the solution
+
+ dotnet run ->inside myWebApi directory
+ 
+ 
+ 
+=========== convert console app to web app===========
+ in console app -> double click and open csproject file
+ make below changes
+ 
+ change <Project Sdk="Microsoft.NET.Sdk"> to <Project Sdk="Microsoft.NET.Sdk.Web">
+ 
+ remove below line
+  <OutputType>Exe</OutputType>
+  
+  
+  reload project
+  make changes and add below code in program.cs file
+  
+  using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using System;
+
+namespace Console_app
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+        }
+    }
+
+    
+}
+
+  
+  ->add a new class named Startup.cs
+  add below code
+  
+  
+  ->routing means accessing resources using urls
+  
+  
+  ->Each request and response travel through middlewares
+  ->middlewares are contained in http pipe line	
+  -> adds security
+  -> exception handling
+  -> authentication (only valid users will get the access) 
+  
+  
+  ->Use() method to create a new(custom) middlewares
+  ->Next() method to pass the execution to next middleware
+  ->Run() method complete the middleware execution
+  ->Map() method to bind you logic for specific url
+ the method who does not have a next() method ,then the request will only travel through that method and the return
+ 
+ 
+ You can use the USE method to terminate middleware instead of Run method

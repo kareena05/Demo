@@ -96,5 +96,9 @@
 
 *-MYSQL practice with queries*
 
+# Day 8
+
+
+*-started with dotnet,Web Apis,HTTP,middleware basics, routing*
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
