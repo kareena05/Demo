@@ -1,0 +1,7 @@
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.csproj.AssemblyReference.cache
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.AssemblyInfoInputs.cache
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.AssemblyInfo.cs
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.csproj.CoreCompileInputs.cache
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Git Projects\Demo\WebAPIs\Practice_Web_Api\Practice_Web_Api\obj\Debug\net6.0\Practice_Web_Api.MvcApplicationPartsAssemblyInfo.cache

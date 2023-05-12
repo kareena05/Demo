@@ -1,0 +1,5 @@
+->Dependency Injection.
+-> db firsst.
+-> automapper.
+-> Services,Data,Model(record).
+-> cookie

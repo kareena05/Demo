@@ -69,3 +69,76 @@ namespace Console_app
  
  
  You can use the USE method to terminate middleware instead of Run method
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ =================WEB APIs===============
+ -> create a new web api project
+ -> add new class in project superhero.cs and add some properties as id,name,amount etc..
+ ->add the controller -> API Controller Empty(SuperHereo controller)
+ ->create the get,post,put,,delete methods in superhero controller 
+ 
+ 
+ //now with the database
+ Create a Data folder in a main project.sln
+ now inside data folder create a dataContext class file inherit it from DbContext 
+ -> for that u need to install using Microsoft.EntityFrameworkCore;
+ ->  Microsoft.EntityFrameworkCore.Design
+  ->  Microsoft.EntityFrameworkCore.SqlServer
+  ->dotnet add package Microsoft.EntityFrameworkCore.Tools	
+  
+  
+ -> add the connection string in appsettings.json
+ -> intsall entity framework using below commmand in package management console(view->other windows->package management console)
+ dotnet tool install --global dotnet-ef
+  make changes in DataContext .cs
+ 
+     public class DataContext : DbContext
+    {
+        public DataContext(DbContextOptions<DataContext> options) : base(options){}
+
+        //here the superHeros is the name of the db table
+        public DbSet<SuperHero> SuperHeroes { get; set; }
+    }
+ make changes in program .cs
+ 
+   builder.Services.AddDbContext<DataContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+			
+			
+ -->run below commands in package management console
+ dotnet ef migrations add CreateInitial
+ dotnet ef database update 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ controller -> repository -> database
+ controller is public methods which are exposed to clients
+ repository is a logic
+ if we want to use the logic(repository) we can create a new instance in the controller but it creates problems
+ solution is: dependecy injection

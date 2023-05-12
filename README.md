@@ -101,4 +101,14 @@
 
 *-started with dotnet,Web Apis,HTTP,middleware basics, routing*
 
+# Day 8
+
+
+*-Web Api Project creation*
+*models*
+*database connection*
+*controllers-GET-POST-PUT-DELETE[CRUD operations]*
+
+
+
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
