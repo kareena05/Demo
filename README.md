@@ -1,6 +1,4 @@
-# Demo
 
-<<<<<<< HEAD
 
 # Day 1
 
@@ -101,13 +99,22 @@
 
 *-started with dotnet,Web Apis,HTTP,middleware basics, routing*
 
-# Day 8
+# Day 9
 
 
 *-Web Api Project creation*
 *models*
 *database connection*
 *controllers-GET-POST-PUT-DELETE[CRUD operations]*
+
+# Day 10
+
+
+*-Entity Framework*
+*-Analyzed the twitter and determined the features and working  of twitter*
+*-Requirements / features that i would be developing*
+*-project table design for twitter clone*
+*-User table ,tweeter_tbl,follower_tbl,comment_tbl,like_tweet_tbl,drafts_tbl,Comment_like_tbl*
 
 
 

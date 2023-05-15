@@ -142,3 +142,37 @@ namespace Console_app
  repository is a logic
  if we want to use the logic(repository) we can create a new instance in the controller but it creates problems
  solution is: dependecy injection
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ create new api projject
+ intsall 4 packages tools,sqlserver,design and core
+ run the command in package management cosole->
+ Scaffold-DbContext "Server=(LocalDb)\MSSQLLocalDB; Database=Demodb; Trusted_connection=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+ register the dbcontext in services
+ private readonly DemodbContext _context;
+ 
+ 
+ FruitController.cs file
+        public FruitController(DemodbContext context) {
+
+            _context = context;
+        }
+        //get
+        [HttpGet]
+        public async Task<ActionResult<List<FruitTbl>>> get()
+        {
+            return Ok(await _context.FruitTbls.ToListAsync());
+        }
+		
+		
+		
+		
+		
+		delegates  with events
