@@ -5,6 +5,6 @@
     "\\SuperHeroApi\\Controllers",
     "\\SuperHeroApi\\Data"
   ],
-  "SelectedNode": "\\SuperHeroApi\\Data",
+  "SelectedNode": "\\SuperHeroApi\\Controllers\\ValuesController.cs",
   "PreviewInSolutionExplorer": false
 }

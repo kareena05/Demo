@@ -116,6 +116,12 @@
 *-project table design for twitter clone*
 *-User table ,tweeter_tbl,follower_tbl,comment_tbl,like_tweet_tbl,drafts_tbl,Comment_like_tbl*
 
+# Day 11
+*-worked on Twitter project*
+
+*- creation of tables and models*
+
+*-Signup,Login,deletion of account*
 
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b

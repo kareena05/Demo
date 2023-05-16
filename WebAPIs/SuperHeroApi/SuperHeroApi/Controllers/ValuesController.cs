@@ -24,7 +24,7 @@ namespace SuperHeroApi.Controllers
         [HttpGet]
         public async Task<List<SuperHero>> GetAll()
         {
-            return (await context.SuperHeroes.ToListAsync());
+            return Ok(await context.SuperHeroes.ToListAsync());
            //return Ok(heros);
         }
 
