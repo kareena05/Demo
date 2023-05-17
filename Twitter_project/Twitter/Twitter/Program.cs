@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Twitter.Data;
+using Twitter.Repository;
 
 namespace Twitter
 {
@@ -17,10 +18,13 @@ namespace Twitter
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserTweetRepository,UserTweetRepository>();
+            builder.Services.AddAutoMapper(typeof(MapperConfig));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
 
             var app = builder.Build();
 

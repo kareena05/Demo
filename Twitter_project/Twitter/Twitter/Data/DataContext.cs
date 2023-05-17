@@ -8,7 +8,8 @@ namespace Twitter.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         
-        public DbSet<User_tbl> Users { get; set; }
-        public DbSet<UserProfile_tbl> UserProfile { get; set; }
+        public DbSet<User_entity> Users { get; set; }
+        public DbSet<UserProfile_entity> UserProfile { get; set; }
+        public DbSet<Tweet_entity> Tweets { get; set; }
     }
 }

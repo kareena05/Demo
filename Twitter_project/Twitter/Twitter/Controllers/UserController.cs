@@ -27,6 +27,8 @@ namespace Twitter.Controllers
             return Ok(await _userRepository.GetUser());
         }
 
+        
+
 
         //registration/ SignUp
         [HttpPost("AddUser")]
@@ -39,8 +41,17 @@ namespace Twitter.Controllers
         [HttpGet("Login")]
         public async Task<ActionResult> Login(string emailorusername,string password)
         {
-            return Ok(_userRepository.LoginUser(emailorusername,password));
+            return Ok(await _userRepository.LoginUser(emailorusername,password));
         }
+
+
+        //change password
+        [HttpPut("Change password")]
+        public async Task<ActionResult> Change_Password(int id,string oldPassword,string newPassword)
+        {
+            return Ok( await _userRepository.Change_Password(id,oldPassword,newPassword));
+        }
+
 
         //delete the account
         [HttpDelete("DeleteAccount")]

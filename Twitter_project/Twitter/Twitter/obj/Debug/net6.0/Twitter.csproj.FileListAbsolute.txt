@@ -5,6 +5,7 @@ D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Twitter.de
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Twitter.runtimeconfig.json
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Twitter.dll
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Twitter.pdb
+D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\AutoMapper.dll
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Azure.Core.dll
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\Azure.Identity.dll
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\EntityFramework.SqlServer.dll
@@ -93,3 +94,4 @@ D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\obj\Debug\net6.0\refint\Twi
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\obj\Debug\net6.0\Twitter.pdb
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\obj\Debug\net6.0\Twitter.genruntimeconfig.cache
 D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\obj\Debug\net6.0\ref\Twitter.dll
+D:\Git Projects\Demo\Twitter_project\Twitter\Twitter\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

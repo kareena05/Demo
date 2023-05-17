@@ -123,5 +123,18 @@
 
 *-Signup,Login,deletion of account*
 
+# Day 12
+
+
+*Mapping using AutoMapper*
+
+*-lifetime of services*
+
+*-worked on Twitter project*
+
+*- creation of tables and models FOR Tweet*
+
+*-Posting a tweet,editing a tweet*
+
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b
