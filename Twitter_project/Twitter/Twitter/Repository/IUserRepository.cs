@@ -1,4 +1,5 @@
-﻿using Twitter.Models;
+﻿using Twitter.Entities;
+using Twitter.Models;
 
 namespace Twitter
 {
@@ -11,5 +12,9 @@ namespace Twitter
         Task<string> LoginUser(string emailorusername,string password);
         Task<string> Change_Password(int id ,string oldPassword,string newPassword);
         Task<string> Follow(int myid,int friend_id);
+        Task<IList<string>> ShowFollowRequests(int myid);
+        Task<string> AcceptFollowRequests(int myid, int requestid);
+        Task<string> RejectFollowRequests(int myid, int requestid);
+        Task<IList<Follower_entity>> ShowMyFollowers(int myid);
     }
 }

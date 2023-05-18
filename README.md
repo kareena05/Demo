@@ -137,4 +137,17 @@
 *-Posting a tweet,editing a tweet*
 
 
+# Day 13
+
+
+*Wokrked on Draft Tweet Functionality*
+
+*-Draft a tweet, Editing Draft,Deleting draft,Post tweet from draft*
+
+*-worked on Followers activity of twitter project*
+
+*-Follow a person, Show The follow Requests intended to me, accept the follow request,reject the request*
+
+
+
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b

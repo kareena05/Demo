@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Twitter.Data;
+using Twitter.Entities;
 using Twitter.Models;
 
 namespace Twitter.Controllers
@@ -71,14 +73,41 @@ namespace Twitter.Controllers
             return Ok(await _userRepository.Follow(myid,friend_id));
         }
 
+        //Show my follow requests
         [HttpGet("ShowFollowRequests")]
-
         public async Task<ActionResult> ShowFollowRequests(int myid)
         {
             //deleting the user means simply inactivating the user
-            return Ok(await _userRepository.Follow(myid));
+            return Ok(await _userRepository.ShowFollowRequests(myid));
         }
 
+
+        //Accept the follow Request
+        [HttpGet("AcceptFollowRequests")]
+        public async Task<ActionResult> AcceptFollowRequests(int myid,int requestid)
+        {
+            //deleting the user means simply inactivating the user
+            return Ok(await _userRepository.AcceptFollowRequests(myid,requestid));
+        }
+        //Reject the follow Request
+        [HttpDelete("RejectFollowRequests")]
+        public async Task<ActionResult> RejectFollowRequests(int myid, int requestid)
+        {
+            //deleting the user means simply inactivating the user
+            return Ok(await _userRepository.RejectFollowRequests(myid, requestid));
+        }
+
+        [HttpGet("ShowMyFollowers")]
+        public async Task<IActionResult> ShowMyFollowers(int myid)
+        {
+                return Ok(await _userRepository.ShowMyFollowers(myid));
+        }
+        [HttpDelete("Unfollow")]
+        public async Task<ActionResult> Unfollow(int myid, int followerid)
+        {
+            //deleting the user means simply inactivating the user
+            return Ok(await _userRepository.RejectFollowRequests(myid, followerid));
+        }
 
 
 
