@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 using Twitter.Data;
+using Twitter.Entities;
 using Twitter.Models;
 using Twitter.Repository;
 
@@ -63,8 +64,6 @@ namespace Twitter
                 }
             }
         }
-
-
 
 
         public virtual async Task<string> DeleteUser(int id)
@@ -134,5 +133,56 @@ namespace Twitter
 
 
         }
+        
+        public async Task<string> Follow(int myid,int friend_id)
+        {
+           var friend = _context.Users.Where(a => a.id == friend_id && a.is_active==true).FirstOrDefault();
+            // if user exist
+            if (friend != null) {
+                var follow = new Follower_entity();
+               var check_acc_type = _context.UserProfile.Where(a => a.UserId==friend.id).FirstOrDefault();
+                follow.follower_Id = myid;
+                follow.user_id = friend_id;
+                follow.created_on = DateTime.Now;
+                //IF Profile is  added in profile table
+                if (check_acc_type != null)
+                {    
+                    //if account is public
+                    if (check_acc_type.account_type == true)
+                    {
+                        follow.is_approved = true;
+                        await _context.AddAsync(follow);
+                        await _context.SaveChangesAsync();
+                        return $"Following{friend.firstname}";
+                    }
+                    // if account is private 
+                    else
+                    {
+                        follow.is_approved = false;
+                        await _context.AddAsync(follow);
+                        await _context.SaveChangesAsync();
+                        return $"Follow Request Sent to {friend.firstname}";
+                    }
+                   
+                }
+                //IF Profile is not yet added in profile table
+                //hence we assume the user has by default public account
+                else
+                {
+                    follow.is_approved = true;
+                    await _context.AddAsync(follow);
+                    await _context.SaveChangesAsync();
+                    return $"You are Now Following {friend.firstname}";
+                }
+            }
+            //user does not exist
+            else
+            {
+                return "Sorry ! This User Account is not available";
+            }
+        }
+
+
+
     }
 }

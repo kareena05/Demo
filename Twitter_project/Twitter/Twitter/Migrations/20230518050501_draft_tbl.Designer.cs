@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Twitter.Data;
 
@@ -11,9 +12,11 @@ using Twitter.Data;
 namespace Twitter.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230518050501_draft_tbl")]
+    partial class draft_tbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,35 +46,6 @@ namespace Twitter.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Drafts");
-                });
-
-            modelBuilder.Entity("Twitter.Entities.Follower_entity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("created_on")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("follower_Id")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("is_approved")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("user_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("follower_Id");
-
-                    b.HasIndex("user_id");
-
-                    b.ToTable("followers");
                 });
 
             modelBuilder.Entity("Twitter.Models.Tweet_entity", b =>
@@ -196,21 +170,6 @@ namespace Twitter.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Twitter.Entities.Follower_entity", b =>
-                {
-                    b.HasOne("Twitter.Models.User_entity", "followed_by")
-                        .WithMany("follower_in_users")
-                        .HasForeignKey("follower_Id");
-
-                    b.HasOne("Twitter.Models.User_entity", "User")
-                        .WithMany("user_in_users")
-                        .HasForeignKey("user_id");
-
-                    b.Navigation("User");
-
-                    b.Navigation("followed_by");
-                });
-
             modelBuilder.Entity("Twitter.Models.Tweet_entity", b =>
                 {
                     b.HasOne("Twitter.Models.User_entity", "User")
@@ -231,13 +190,6 @@ namespace Twitter.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Twitter.Models.User_entity", b =>
-                {
-                    b.Navigation("follower_in_users");
-
-                    b.Navigation("user_in_users");
                 });
 #pragma warning restore 612, 618
         }

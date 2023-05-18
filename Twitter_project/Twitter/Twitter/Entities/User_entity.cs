@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Twitter.Entities;
 
 //connected with actual db
 
@@ -34,6 +35,9 @@ namespace Twitter.Models
         public DateTime modified_on { get; set;}
 
         public bool is_active { get; set; } = true;
+
+        public List<Follower_entity> user_in_users { get; set; }
+        public List<Follower_entity> follower_in_users { get; set; }
 
     }
 }

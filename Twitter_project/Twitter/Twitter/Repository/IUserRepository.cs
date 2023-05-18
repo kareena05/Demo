@@ -10,6 +10,6 @@ namespace Twitter
         Task<string> DeleteUser(int id);
         Task<string> LoginUser(string emailorusername,string password);
         Task<string> Change_Password(int id ,string oldPassword,string newPassword);
-
+        Task<string> Follow(int myid,int friend_id);
     }
 }

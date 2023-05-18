@@ -63,5 +63,24 @@ namespace Twitter.Controllers
 
 
 
+        ////////////////////Follow Activities//////////////////////
+        [HttpPost("Follow")]
+        public async Task<ActionResult> Follow(int myid, int friend_id)
+        {
+            //deleting the user means simply inactivating the user
+            return Ok(await _userRepository.Follow(myid,friend_id));
+        }
+
+        [HttpGet("ShowFollowRequests")]
+
+        public async Task<ActionResult> ShowFollowRequests(int myid)
+        {
+            //deleting the user means simply inactivating the user
+            return Ok(await _userRepository.Follow(myid));
+        }
+
+
+
+
     }
 }
