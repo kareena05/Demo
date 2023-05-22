@@ -148,6 +148,18 @@
 
 *-Follow a person, Show The follow Requests intended to me, accept the follow request,reject the request*
 
+# Day 13
+
+
+*Wokrked on Likes ,commemts Functionality*
+
+*-Like the tweet,unlike the tweet*
+
+*-Comment on tweet, edit the comment,delete the comment*
+
+*-User can view comments,who commented,when*
+
+*-Tweets of followers with number of likes, number of  comments, all the comments on the tweet with who commented and when*
 
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b

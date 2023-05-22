@@ -22,6 +22,39 @@ namespace Twitter.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Twitter.Entities.Comment_entity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("comment_text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("tweet_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("tweet_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("comments");
+                });
+
             modelBuilder.Entity("Twitter.Entities.Draft_entity", b =>
                 {
                     b.Property<int>("Id")
@@ -72,6 +105,32 @@ namespace Twitter.Migrations
                     b.HasIndex("user_id");
 
                     b.ToTable("followers");
+                });
+
+            modelBuilder.Entity("Twitter.Entities.Like_Tweet_entity", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("tweet_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("tweet_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("like_Tweet");
                 });
 
             modelBuilder.Entity("Twitter.Models.Tweet_entity", b =>
@@ -185,6 +244,25 @@ namespace Twitter.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Twitter.Entities.Comment_entity", b =>
+                {
+                    b.HasOne("Twitter.Models.Tweet_entity", "tweets")
+                        .WithMany("comments_tweettbl")
+                        .HasForeignKey("tweet_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Twitter.Models.User_entity", "user")
+                        .WithMany("comments_usertbl")
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("tweets");
+
+                    b.Navigation("user");
+                });
+
             modelBuilder.Entity("Twitter.Entities.Draft_entity", b =>
                 {
                     b.HasOne("Twitter.Models.User_entity", "User")
@@ -211,6 +289,25 @@ namespace Twitter.Migrations
                     b.Navigation("followed_by");
                 });
 
+            modelBuilder.Entity("Twitter.Entities.Like_Tweet_entity", b =>
+                {
+                    b.HasOne("Twitter.Models.Tweet_entity", "tweet_tbl")
+                        .WithMany("likes_tweets_tweettbl")
+                        .HasForeignKey("tweet_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Twitter.Models.User_entity", "User")
+                        .WithMany("likes_tweets_usertbl")
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("tweet_tbl");
+                });
+
             modelBuilder.Entity("Twitter.Models.Tweet_entity", b =>
                 {
                     b.HasOne("Twitter.Models.User_entity", "User")
@@ -233,9 +330,20 @@ namespace Twitter.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Twitter.Models.Tweet_entity", b =>
+                {
+                    b.Navigation("comments_tweettbl");
+
+                    b.Navigation("likes_tweets_tweettbl");
+                });
+
             modelBuilder.Entity("Twitter.Models.User_entity", b =>
                 {
+                    b.Navigation("comments_usertbl");
+
                     b.Navigation("follower_in_users");
+
+                    b.Navigation("likes_tweets_usertbl");
 
                     b.Navigation("user_in_users");
                 });

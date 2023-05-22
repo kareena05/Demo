@@ -19,22 +19,23 @@ namespace Twitter.Repository
         }
         //Get all the user's tweet
 
-        public  async Task<List<Tweet_entity>> GetAllTweets()
+        public async Task<List<Tweet_entity>> GetAllTweets()
         {
             return await _context.Tweets.ToListAsync();
-            
+
         }
 
         //post a new tweet
-        public  async Task<int> PostNewTweet(int userid,SaveTweetModel model)
+        public async Task<int> PostNewTweet(int userid, SaveTweetModel model)
         {
-            var myUser = _context.Users.Where(a => a.id == userid && a.is_active==true).FirstOrDefault();
+            var myUser = _context.Users.Where(a => a.id == userid && a.is_active == true).FirstOrDefault();
             if (myUser != null)
             {
-                
+
                 Tweet_entity tweet_tbl = _mapper.Map<Tweet_entity>(model);
                 tweet_tbl.UserId = userid;
-                tweet_tbl.created_on=DateTime.Now;
+                tweet_tbl.created_on = DateTime.Now;
+
                 await _context.AddAsync(tweet_tbl);
                 await _context.SaveChangesAsync();
                 return tweet_tbl.Id;
@@ -47,10 +48,10 @@ namespace Twitter.Repository
         }
 
         //show my all tweets (particular user's own tweets)
-        public  async Task<List<Tweet_entity>> GetMyAllTweets(int id)
+        public async Task<List<Tweet_entity>> GetMyAllTweets(int id)
         {
-           var myList =await _context.Tweets.Where(a => a.UserId == id && a.is_deleted==false).ToListAsync();
-            if(myList != null)
+            var myList = await _context.Tweets.Where(a => a.UserId == id && a.is_deleted == false).ToListAsync();
+            if (myList != null)
             {
                 return myList;
             }
@@ -63,18 +64,19 @@ namespace Twitter.Repository
 
 
         //edit the tweet
-        public  async Task<string> EditTweet(int userid, int tweetid, SaveTweetModel model)
+        public async Task<string> EditTweet(int userid, int tweetid, SaveTweetModel model)
         {
-            var myTweet = _context.Tweets.Where(a=> a.Id == tweetid && a.UserId== userid).FirstOrDefault();
-            
-            if (myTweet != null) {
-                
-                 myTweet.tweet_text=model.tweet_text;
+            var myTweet = _context.Tweets.Where(a => a.Id == tweetid && a.UserId == userid).FirstOrDefault();
+
+            if (myTweet != null)
+            {
+
+                myTweet.tweet_text = model.tweet_text;
                 myTweet.modified_on = DateTime.Now;
 
                 _context.Update(myTweet);
                 await _context.SaveChangesAsync();
-                
+
                 return "Edited successfully !";
             }
             else
@@ -84,7 +86,7 @@ namespace Twitter.Repository
 
         }
         //keep my tweet in draft
-        public  async Task<string> DraftTweet(int userid, string tweet_text)
+        public async Task<string> DraftTweet(int userid, string tweet_text)
         {
             var myDraft = new Draft_entity();
             myDraft.UserId = userid; ;
@@ -92,14 +94,14 @@ namespace Twitter.Repository
             await _context.AddAsync(myDraft);
             await _context.SaveChangesAsync();
             return "Draft Saved Successfully";
-           
+
         }
 
         //show my drafts
-        public  async Task<List<Draft_entity>> ShowMyDrafts(int userid)
+        public async Task<List<Draft_entity>> ShowMyDrafts(int userid)
         {
-            var myDrafts =  _context.Drafts.Where(a => a.UserId == userid);
-            if(myDrafts != null)
+            var myDrafts = _context.Drafts.Where(a => a.UserId == userid);
+            if (myDrafts != null)
                 return myDrafts.ToList();
             else
                 return new List<Draft_entity>();
@@ -110,7 +112,7 @@ namespace Twitter.Repository
         {
             var myDraft = _context.Drafts.
                 Where(a => a.Id == draftid && a.UserId == userid).FirstOrDefault();
-            if(myDraft != null)
+            if (myDraft != null)
             {
                 myDraft.Tweet_text = tweet_text;
                 _context.Update(myDraft);
@@ -130,7 +132,7 @@ namespace Twitter.Repository
                 Where(a => a.Id == draftid && a.UserId == userid).FirstOrDefault();
 
             _context.Remove(myDraft);
-           await  _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return "Draft deleted"!;
         }
 
@@ -143,9 +145,9 @@ namespace Twitter.Repository
 
             Tweet_entity myNewTweet = new Tweet_entity();
             myNewTweet.UserId = userid;
-            myNewTweet.created_on= DateTime.Now;
+            myNewTweet.created_on = DateTime.Now;
             myNewTweet.tweet_text = myDraft.Tweet_text;
-            
+
             _context.Update(myNewTweet);
             await _context.SaveChangesAsync();
             DeleteMyDraft(userid, draftid);
@@ -154,7 +156,7 @@ namespace Twitter.Repository
 
         //Delete the tweet  -> simply set is_deleted = true
 
-        public  async Task<string> DeleteTweet(int userid, int tweetid)
+        public async Task<string> DeleteTweet(int userid, int tweetid)
         {
             var myTweet = _context.Tweets.Where(a => a.Id == tweetid && a.UserId == userid).FirstOrDefault();
             if (myTweet != null)
@@ -170,5 +172,135 @@ namespace Twitter.Repository
             }
         }
 
+        //Like section
+        public async Task<string> LikeTweet(int myid, int tweetid)
+        {
+
+            var tweet_not_deleted = _context.Tweets.Where(a => a.Id == tweetid && a.is_deleted == false).FirstOrDefault();
+            if (tweet_not_deleted != null)
+            {
+
+                var if_liked = _context.like_Tweet.Where(a => a.tweet_id == tweetid && a.user_id == myid).FirstOrDefault();
+                if (if_liked == null)
+                {
+                    var like = new Like_Tweet_entity();
+                    like.tweet_id = tweetid;
+                    like.user_id = myid;
+                    like.created_on = DateTime.Now;
+
+                    await _context.AddAsync(like);
+                    await _context.SaveChangesAsync();
+                    return "Liked 👍";
+                }
+                else
+                {
+                    return "";
+                }
+
+            }
+            else
+            {
+                return "Unable to Like";
+            }
+
+        }
+
+        public async Task<string> UnlikeTweet(int myid, int tweetid)
+        {
+            var like = _context.like_Tweet.
+                Where(a => a.tweet_id == tweetid && a.user_id == myid).FirstOrDefault();
+
+            if (like != null)
+            {
+                _context.Remove(like);
+                await _context.SaveChangesAsync();
+                return "Like removed";
+            }
+            return "Failed to UnLike.. Please Check your connection ";
+        }
+
+        public async Task<string> Comment(int myid, int tweetid, string comment_text)
+        {
+
+
+            var comment = new Comment_entity();
+            comment.tweet_id = tweetid;
+            comment.comment_text = comment_text;
+            comment.user_id = myid;
+            comment.created_on = DateTime.Now;
+            await _context.AddAsync(comment);
+            await _context.SaveChangesAsync();
+
+            return "Comment added";
+
+        }
+        public async Task<string> EditComment(int myid, int commentid, string comment_text)
+        {
+            var comment = _context.comments.
+                Where(a => a.user_id == myid && a.Id == commentid).FirstOrDefault();
+            if (comment != null)
+            {
+                comment.comment_text = comment_text;
+                comment.modified_on = DateTime.Now;
+                _context.Update(comment);
+                await _context.SaveChangesAsync();
+                return "Comment Edited Successfully";
+            }
+            else
+            {
+                return "You can't edit someone else's comment";
+            }
+        }
+
+        public async Task<string> DeleteComment(int myid, int commentid)
+        {
+            var comment = _context.comments.
+                Where(a => a.user_id == myid && a.Id == commentid).FirstOrDefault();
+            if (comment != null)
+            {
+
+                _context.Remove(comment);
+                await _context.SaveChangesAsync();
+                return "Comment Deleted Successfully";
+            }
+            else
+            {
+                return "You can't delete someone else's comment";
+            }
+        }
+
+        public async Task<string> LikeComment(int myid, int commentid)
+        {
+
+            var comment_not_deleted = _context.comments.Where(a => a.Id == commentid).FirstOrDefault();
+            if (comment_not_deleted != null)
+            {
+
+                //var if_liked = _context.comments.Where(a => a.Id == commentid && a.user_id == myid).FirstOrDefault();
+                //if (if_liked == null)
+                //{
+                //    var like = new Like_Tweet_entity();
+                //    like.tweet_id = tweetid;
+                //    like.user_id = myid;
+                //    like.created_on = DateTime.Now;
+
+                //    await _context.AddAsync(like);
+                //    await _context.SaveChangesAsync();
+                //    return "Liked 👍";
+                //}
+                //else
+                //{
+                //    return "";
+                //}
+
+                //}
+                //else
+                //{
+                //    return "Unable to Like";
+                //}
+                return "yes";
+            }
+            return "yes";
+        }
     }
 }

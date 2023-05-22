@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.NetworkInformation;
+using Twitter.Entities;
 
 namespace Twitter.Models
 {
@@ -27,7 +28,8 @@ namespace Twitter.Models
         public bool is_deleted { get; set; }
 
 
-
-
+        //collection navigation property
+        public ICollection<Like_Tweet_entity> likes_tweets_tweettbl { get; set; }
+        public ICollection<Comment_entity> comments_tweettbl { get; set; }
     }
 }

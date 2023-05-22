@@ -39,5 +39,10 @@ namespace Twitter.Models
         public List<Follower_entity> user_in_users { get; set; }
         public List<Follower_entity> follower_in_users { get; set; }
 
+        //collection navigation property
+        public ICollection<Like_Tweet_entity> likes_tweets_usertbl { get; set; }
+
+        public ICollection<Comment_entity> comments_usertbl { get; set; }
+
     }
 }

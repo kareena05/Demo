@@ -17,7 +17,13 @@ namespace Twitter.Repository
         Task<string> PostMyDraft(int userid, int draftid);
         Task<string> EditDraft(int userid, int draftid, string tweet_text);
         Task<string> DeleteMyDraft(int userid, int draftid);
+        Task<string> LikeTweet(int myid, int tweetid);
+        Task<string> UnlikeTweet(int myid, int tweetid);
+        Task<string> Comment(int myid, int tweetid,string comment_text);
+        Task<string> EditComment(int myid, int commentid, string comment_text);
+        Task<string> DeleteComment(int myid, int commentid);
 
+        Task<string> LikeComment(int myid, int commentid);
     }
 }
 

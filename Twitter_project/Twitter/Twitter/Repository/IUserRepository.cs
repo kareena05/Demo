@@ -1,4 +1,6 @@
-﻿using Twitter.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Twitter.Entities;
 using Twitter.Models;
 
 namespace Twitter
@@ -16,5 +18,8 @@ namespace Twitter
         Task<string> AcceptFollowRequests(int myid, int requestid);
         Task<string> RejectFollowRequests(int myid, int requestid);
         Task<IList<Follower_entity>> ShowMyFollowers(int myid);
+        Task<string> Unfollow(int myid, int followerid);
+        Task<IEnumerable<TweetsOfMyFollowers>> TweetsofFollowers(int myid);
+
     }
 }

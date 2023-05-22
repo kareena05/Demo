@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
+using System.Xml.Linq;
 using Twitter.Data;
 using Twitter.Entities;
 using Twitter.Models;
@@ -153,7 +155,7 @@ namespace Twitter
                         follow.is_approved = true;
                         await _context.AddAsync(follow);
                         await _context.SaveChangesAsync();
-                        return $"Following{friend.firstname}";
+                        return $"You are now Following {friend.firstname}";
                     }
                     // if account is private 
                     else
@@ -228,7 +230,7 @@ namespace Twitter
             }
             else
             {
-                return "Failed to Accept the request";
+                return "Failed to Reject the request";
             }
         }
 
@@ -237,17 +239,27 @@ namespace Twitter
         //Show my followers
         public async Task<IList<Follower_entity>> ShowMyFollowers(int myid)
         {
-            var myfollowers = await _context.followers.
-                Where(a => a.user_id == myid && a.is_approved==true).ToListAsync();
-            return myfollowers;
+            var myfollowers =  _context.followers.Where(a => a.user_id==myid && a.is_approved==true).ToList();
+            if (myfollowers.Count == 0)
+            {
+                return new List<Follower_entity>();
+            }
+            else
+            {
+                return myfollowers;
+                
+            }
+            
+            
+            
         }
 
         //Unfollow 
         public async Task<string> Unfollow(int myid, int followerid)
         {
-            var myfollower = await _context.followers
-                .Where(a=> a.user_id== myid && a.follower_Id== followerid)
-                .FirstOrDefaultAsync();
+            var myfollower =  _context.followers
+                .Where(a=> a.user_id== followerid && a.follower_Id== myid)
+                .FirstOrDefault();
             if(myfollower != null)
             {
                 _context.Remove(myfollower);
@@ -259,5 +271,97 @@ namespace Twitter
                 return "Failed to unfollow";
             }
         }
+
+        public async Task<IEnumerable<TweetsOfMyFollowers>> TweetsofFollowers(int myid)
+        {
+
+            var users = _context.Users.ToList();
+            var followers = _context.followers.
+                Where(a => a.user_id == myid).ToList();
+
+            var tweets = _context.Tweets.ToList();
+            var commentss = _context.comments.ToList();
+
+
+            dynamic result = from f in followers
+                             join t in tweets
+                             on f.follower_Id equals t.UserId
+                             where t.is_deleted == false
+                             join u in users
+                             on t.UserId equals u.id
+                             select new TweetsOfMyFollowers
+                             {
+                                 Username = u.username,
+                                 firstname = u.firstname,
+                                 posted_on = t.created_on,
+                                 tweet_text = t.tweet_text,
+                                 likes = _context.like_Tweet.
+                                 Where(a => a.tweet_id == t.Id).Count(),
+                                 comments = from c in commentss
+                                            join us in users
+                                            on c.user_id equals us.id
+                                            where c.tweet_id == t.Id
+                                            select new Comments_and_Users
+                                            {
+                                                username = us.username,
+                                                firstname = us.firstname,
+                                                lastname = us.lastname,
+                                                comment_text = c.comment_text,
+                                                posted_on = c.created_on,
+                                            },
+
+                                 comments_count = _context.comments.
+                                 Where(a => a.tweet_id == t.Id).Count()
+
+                             };
+
+            return result;
+        }
+        //public async Task<IEnumerable<TweetsOfMyFollowers>> TweetsofFollowers(int myid)
+        //{
+
+        //    var users = _context.Users.ToList();
+        //    var followers = _context.followers.
+        //        Where(a => a.user_id == myid).ToList();
+
+        //    var tweets = _context.Tweets.ToList();
+        //    var commentss = _context.comments.ToList();
+
+
+        //    dynamic result = from f in followers
+        //                     join t in tweets
+        //                     on f.follower_Id equals t.UserId
+        //                     where t.is_deleted == false
+        //                     join u in users
+        //                     on t.UserId equals u.id
+        //                     select new TweetsOfMyFollowers
+        //                     {
+        //                         Username = u.username,
+        //                         firstname = u.firstname,
+        //                         posted_on = t.created_on,
+        //                         tweet_text = t.tweet_text,
+        //                         likes = _context.like_Tweet.
+        //                         Where(a => a.tweet_id == t.Id).Count(),
+        //                         comments = from c in commentss
+        //                                    join us in users
+        //                                    on c.user_id equals us.id
+        //                                    where c.tweet_id == t.Id
+        //                                    select new Comments_and_Users
+        //                                    {
+        //                                        username = us.username,
+        //                                        firstname = us.firstname,
+        //                                        lastname = us.lastname,
+        //                                        comment_text = c.comment_text,
+        //                                        posted_on = c.created_on,
+        //                                    },
+
+        //                         comments_count = _context.comments.
+        //                         Where(a=>a.tweet_id==t.Id).Count()
+
+        //                     };
+
+        //    return result;
+        //}
+
     }
 }

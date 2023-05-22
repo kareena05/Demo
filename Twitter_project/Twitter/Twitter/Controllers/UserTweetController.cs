@@ -86,7 +86,37 @@ namespace Twitter.Controllers
         [HttpDelete("DeleteMyDraft")]
         public async Task<IActionResult> DeleteMyDraft(int userid, int draftid)
         {
-            return Ok(await _usertweetRepository.DeleteMyDraft(userid,draftid));
+            return Ok(await _usertweetRepository.DeleteMyDraft(userid, draftid));
+        }
+
+
+        [HttpPost("LikeTweet")]
+        public async Task<IActionResult> LikeTweet(int userid, int tweetid)
+        {
+            return Ok(await _usertweetRepository.LikeTweet(userid, tweetid));
+        }
+
+        [HttpDelete("UnlikeTweet")]
+        public async Task<IActionResult> UnlikeTweet(int userid, int draftid)
+        {
+            return Ok(await _usertweetRepository.UnlikeTweet(userid, draftid));
+        }
+
+        [HttpPost("Comment")]
+        public async Task<IActionResult> Comment(int myid, int tweetid, string comment_text)
+        {
+            return Ok(await _usertweetRepository.Comment(myid, tweetid,comment_text));
+        }
+
+        [HttpPatch("EditComment")]
+        public async Task<IActionResult> EditComment(int myid, int commentid, string comment_text)
+        {
+            return Ok(await _usertweetRepository.EditComment(myid, commentid,comment_text));
+        }
+        [HttpDelete("DeleteComment")]
+        public async Task<IActionResult> DeleteComment(int myid, int commentid)
+        {
+            return Ok(await _usertweetRepository.DeleteComment(myid, commentid));
         }
     }
 

@@ -34,5 +34,11 @@ namespace Twitter.Data
         public DbSet<Tweet_entity> Tweets { get; set; }
         public DbSet<Draft_entity> Drafts { get; set; }
         public DbSet<Follower_entity> followers { get; set; }   
+        public DbSet<Like_Tweet_entity> like_Tweet { get; set; }
+        public DbSet<Comment_entity> comments { get; set; }
+       
+      
+      
+        
     }
 }

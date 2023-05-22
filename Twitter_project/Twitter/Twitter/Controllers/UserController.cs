@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 using Twitter.Data;
 using Twitter.Entities;
 using Twitter.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Twitter.Controllers
 {
@@ -100,16 +102,31 @@ namespace Twitter.Controllers
         [HttpGet("ShowMyFollowers")]
         public async Task<IActionResult> ShowMyFollowers(int myid)
         {
-                return Ok(await _userRepository.ShowMyFollowers(myid));
+            var result = await _userRepository.ShowMyFollowers(myid);
+            if(!result.Any())
+            {
+                return BadRequest("No Followers");
+            }
+                return Ok(result);
         }
+
         [HttpDelete("Unfollow")]
         public async Task<ActionResult> Unfollow(int myid, int followerid)
         {
-            //deleting the user means simply inactivating the user
-            return Ok(await _userRepository.RejectFollowRequests(myid, followerid));
+        
+            return Ok(await _userRepository.Unfollow(myid, followerid));
+        }
+
+        [HttpGet("ShowTweetsoffollowers")]
+        public async Task<ActionResult> TweetsofFollowers  (int myid)
+        {
+            return Ok(await _userRepository.TweetsofFollowers(myid));
         }
 
 
+
+
+       
 
     }
 }
