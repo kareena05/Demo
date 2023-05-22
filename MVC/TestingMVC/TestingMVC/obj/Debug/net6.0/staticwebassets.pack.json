@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TestingMVC.bundle.scp.css"
     },
     {
+      "Id": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\wwwroot\\css\\BootswatchTheme.css",
+      "PackagePath": "staticwebassets\\css\\BootswatchTheme.css"
+    },
+    {
       "Id": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

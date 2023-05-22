@@ -1,0 +1,36 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index View of category Controller</h1>
+
+<div class="container p-3">
+<div class="row pt-4">
+    <div class="col-6">
+        <h3 class="text-light " asp-area="">Category List</h3>
+    </div>
+    <div class="col-6 text-end">
+            <a class="btn btn-primary text-light text-end " asp-area="" asp-controller="Category" asp-action="Create"><i class="bi bi-bookmark-plus"></i> Add Category </a>
+    </div>
+</div>
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <th>Category name</th>
+        <th>Display order</th>
+    </thead>
+    <tbody>
+        @foreach( var obj in Model)
+        {
+            <tr>
+                <td>@obj.name</td>
+                <td>@obj.display_order</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

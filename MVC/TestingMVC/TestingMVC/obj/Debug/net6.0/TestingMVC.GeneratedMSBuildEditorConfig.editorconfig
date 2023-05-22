@@ -12,9 +12,13 @@ build_property.RootNamespace = TestingMVC
 build_property.ProjectDir = D:\Git Projects\Demo\MVC\TestingMVC\TestingMVC\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\Git Projects\Demo\MVC\TestingMVC\TestingMVC
 build_property._RazorSourceGeneratorDebug = 
+
+[D:/Git Projects/Demo/MVC/TestingMVC/TestingMVC/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Git Projects/Demo/MVC/TestingMVC/TestingMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

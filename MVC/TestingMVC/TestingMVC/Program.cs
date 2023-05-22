@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TestingMVC.Data;
+
 namespace TestingMVC
 {
     public class Program
@@ -8,6 +11,9 @@ namespace TestingMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(
+            builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             var app = builder.Build();
 

@@ -148,7 +148,7 @@
 
 *-Follow a person, Show The follow Requests intended to me, accept the follow request,reject the request*
 
-# Day 13
+# Day 14
 
 
 *Wokrked on Likes ,commemts Functionality*
@@ -160,6 +160,21 @@
 *-User can view comments,who commented,when*
 
 *-Tweets of followers with number of likes, number of  comments, all the comments on the tweet with who commented and when*
+
+
+# Day 15
+
+
+*Started with MVC*
+
+*-Architecture and folder structure of mvc project*
+
+*-created database and model code first approach*
+
+*-basic controller with get method*
+
+*-bootstrap themes and icons added in view*
+
 
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b

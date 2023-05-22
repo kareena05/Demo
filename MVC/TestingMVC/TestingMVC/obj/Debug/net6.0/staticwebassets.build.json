@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YNpRFKgHGytg1daYNUarpzn3fVe1DyPvtyLhvrka3D4=",
+  "Hash": "RO21zt+JyK6moN/IV6PkDNv98ZUwj5u/3NnL6Hzn4WI=",
   "Source": "TestingMVC",
   "BasePath": "_content/TestingMVC",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\TestingMVC.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\wwwroot\\css\\BootswatchTheme.css",
+      "SourceId": "TestingMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\wwwroot\\",
+      "BasePath": "_content/TestingMVC",
+      "RelativePath": "css/BootswatchTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\BootswatchTheme.css"
     },
     {
       "Identity": "D:\\Git Projects\\Demo\\MVC\\TestingMVC\\TestingMVC\\wwwroot\\css\\site.css",
