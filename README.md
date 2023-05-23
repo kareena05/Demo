@@ -176,5 +176,19 @@
 *-bootstrap themes and icons added in view*
 
 
+# Day 15
+
+
+*Continued with MVC*
+
+*-CRUD operation Of categories table with UI(views , forms , views for submitting the form , deleting or editing the particular category, listing all the categories)*
+
+*-toastr js alerts*
+
+*-partial views*
+
+
+
+
 
 >>>>>>> 0fd8802b5946b2bfcb78e2454c33177714a2d80b

@@ -11,3 +11,30 @@ now include that css file in _layout file of shared folder
   install the package with the same version of your dotnet framework->RazorRuntimeCompilation
  add this line in program.cs
  builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ to use toaster js
+ go to below website
+ https://github.com/CodeSeven/toastr
+ copy the miified css and js
+ 
+ copy css file and paste it  in layout.html file
+     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+ 
+ copy the js path and paste like below in whichever file you require
+	@if (TempData["Success"] != null)
+{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   <script>
+
+        toastr.success('@TempData["Success"]');
+    </script>
+}

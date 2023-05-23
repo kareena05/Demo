@@ -2,32 +2,40 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index View of category Controller</h1>
+@*we included below line here bcoz we are redirecting almost all the views to index view hennce we wanted
+to display alerts on index but suppose we have redirected to any other pages so 
+on those pages also we have to include partial view notification
+solution -> include it in layout html before the render body so it will be applicable to 
+all the pages on the website*@
+@*<partial name="_Notification" />*@
 
 <div class="container p-3">
-<div class="row pt-4">
-    <div class="col-6">
-        <h3 class="text-light " asp-area="">Category List</h3>
-    </div>
-    <div class="col-6 text-end">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h3 class="text-light " asp-area="">Category List</h3>
+        </div>
+        <div class="col-6 text-end">
             <a class="btn btn-primary text-light text-end " asp-area="" asp-controller="Category" asp-action="Create"><i class="bi bi-bookmark-plus"></i> Add Category </a>
+        </div>
     </div>
-</div>
 </div>
 
 <table class="table table-bordered table-striped">
 
     <thead>
-        <th>Category name</th>
-        <th>Display order</th>
+    <th>Category name</th>
+    <th>Display order</th>
+    <th>Edit </th>
+    <th> Delete</th>
     </thead>
     <tbody>
-        @foreach( var obj in Model)
+        @foreach (var obj in Model)
         {
             <tr>
                 <td>@obj.name</td>
                 <td>@obj.display_order</td>
+                <td><a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-light"><i class="bi bi-pencil-square"></i>Edit</a></td>
+                <td><a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger"><i class="bi bi-trash3"></i>Delete</a></td>
             </tr>
         }
     </tbody>
