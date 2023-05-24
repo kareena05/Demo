@@ -14,8 +14,15 @@ now include that css file in _layout file of shared folder
  
  
  
- 
- 
+ {
+"model":
+    {
+
+        "devicesn":"AIQC30006877",
+        "enrolid":5
+    }
+}
+
  
  
  to use toaster js
