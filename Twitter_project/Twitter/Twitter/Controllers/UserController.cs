@@ -122,11 +122,15 @@ namespace Twitter.Controllers
         {
             return Ok(await _userRepository.TweetsofFollowers(myid));
         }
+        //[HttpGet("GetUserwithFollowers")]
+        //public async Task<ActionResult> GetUserwithFollowers(int myid)
+        //{
+        //    return Ok(await _userRepository.GetUserwithFollowers(myid));
+        //}
 
 
 
 
-       
 
     }
 }

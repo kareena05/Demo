@@ -1,0 +1,76 @@
+﻿@model oncAgainMVC.Models.demoModel
+@{
+    ViewData["Title"] = "Home Page";
+    var obj = ViewData["obj"] as oncAgainMVC.Models.demoModel;
+    var obj2 = ViewBag.obj2;
+}
+<style>
+    tr{
+        border:2px solid grey;
+    }
+</style>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h2>@Html.ActionLink("clickme","privacy")</h2>
+    <h3>@ViewData["name"]</h3>
+    <h3>@obj.name  and  @obj2.name</h3>
+    <table border="2" class="table-striped">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.name)</th>
+            <th>@Html.DisplayNameFor(model => model.url)</th>
+            <th>@Html.DisplayNameFor(model => model.phone)</th>
+            <th>@Html.DisplayNameFor(model => model.password)</th>
+        </tr>
+        <tr>
+          
+            <td>@Html.DisplayFor(model => model.name)</td>
+            <td>@Html.DisplayFor(model => model.url)</td>
+            <td>@Html.DisplayFor(model => model.phone)</td>
+            <td>@Html.DisplayFor(model => model.password)</td>
+        </tr>
+        </table>
+        <table>
+        
+        <tr>
+            <td>
+                @Html.DropDownList("Departments", new List<SelectListItem>{
+                    new SelectListItem{Text="IT",Value="1"},
+                    new SelectListItem{Text= "Finance",Value="2"},
+                    new SelectListItem{Text="Data science",Value="3"}
+                },"Select Department",new {@class="form-control"})
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            <form method="post">
+                    Name of employee : @Html.RadioButtonFor(m => m.name,"name1") @Model.name;
+                    @Html.RadioButtonFor(m => m.name,"name2") @Model.name;
+                    <br />
+            <input type="submit" name="submit" />
+            </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            static radio button
+             Female: @Html.RadioButton("Gender","Female")
+             Male: @Html.RadioButton("Gender","Male")
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <form method="post">
+                youtube<input type="checkbox" name="url" value="youtube" /><br />
+                instagram<input type="checkbox" name="url" value="instagram" /><br />
+                linkedin<input type="checkbox" name="url" value="linkedin" /><br />
+                github<input type="checkbox" name="url" value="github" />
+            <input type="submit" name="submit" value="Hit me" />
+            </form>
+            </td>
+        </tr>
+      
+    </table>
+    <span>@ViewBag.details</span>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

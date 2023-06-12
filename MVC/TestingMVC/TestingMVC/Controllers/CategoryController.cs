@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using TestingMVC.Data;
 using TestingMVC.Models;
 
@@ -12,6 +13,8 @@ namespace TestingMVC.Controllers
         {
             _context = context;
         }
+
+        //[HandleError]
         public IActionResult Index()
         {
             var result = _context.Categories.ToList();
@@ -111,6 +114,7 @@ namespace TestingMVC.Controllers
                 _context.SaveChanges();
             TempData["Success"] = "Category Deleted successfully";
             return RedirectToAction("Index");
+           
             
 
         }

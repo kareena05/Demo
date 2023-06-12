@@ -11,17 +11,6 @@ now include that css file in _layout file of shared folder
   install the package with the same version of your dotnet framework->RazorRuntimeCompilation
  add this line in program.cs
  builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
- 
- 
- 
- {
-"model":
-    {
-
-        "devicesn":"AIQC30006877",
-        "enrolid":5
-    }
-}
 
  
  

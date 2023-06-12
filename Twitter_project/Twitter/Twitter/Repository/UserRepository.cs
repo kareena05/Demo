@@ -135,20 +135,21 @@ namespace Twitter
 
 
         }
-        
-        public async Task<string> Follow(int myid,int friend_id)
+
+        public async Task<string> Follow(int myid, int friend_id)
         {
-           var friend = _context.Users.Where(a => a.id == friend_id && a.is_active==true).FirstOrDefault();
+            var friend = _context.Users.Where(a => a.id == friend_id && a.is_active == true).FirstOrDefault();
             // if user exist
-            if (friend != null) {
+            if (friend != null)
+            {
                 var follow = new Follower_entity();
-               var check_acc_type = _context.UserProfile.Where(a => a.UserId==friend.id).FirstOrDefault();
+                var check_acc_type = _context.UserProfile.Where(a => a.UserId == friend.id).FirstOrDefault();
                 follow.follower_Id = myid;
                 follow.user_id = friend_id;
                 follow.created_on = DateTime.Now;
                 //IF Profile is  added in profile table
                 if (check_acc_type != null)
-                {    
+                {
                     //if account is public
                     if (check_acc_type.account_type == true)
                     {
@@ -165,7 +166,7 @@ namespace Twitter
                         await _context.SaveChangesAsync();
                         return $"Follow Request Sent to {friend.firstname}";
                     }
-                   
+
                 }
                 //IF Profile is not yet added in profile table
                 //hence we assume the user has by default public account
@@ -189,25 +190,27 @@ namespace Twitter
         {
             var Requests = new List<string>();
 
-            var myfollowers = _context.followers.Where( a => a.user_id==myid && a.is_approved==false).ToList();
-            
-            foreach(var myfollower in myfollowers)
+            var myfollowers = _context.followers.Where(a => a.user_id == myid && a.is_approved == false).ToList();
+
+            foreach (var myfollower in myfollowers)
             {
-                var OneRequest = _context.Users.Where(a => a.id == myfollower.follower_Id).FirstOrDefault();    
+                var OneRequest = _context.Users.Where(a => a.id == myfollower.follower_Id).FirstOrDefault();
                 Requests.Add(OneRequest.firstname);
 
             }
             return Requests;
 
         }
+
+
         public async Task<string> AcceptFollowRequests(int myid, int requestid)
         {
-            var request = _context.followers.Where(a => a.user_id==myid && a.follower_Id==requestid ).FirstOrDefault();
+            var request = _context.followers.Where(a => a.user_id == myid && a.follower_Id == requestid).FirstOrDefault();
             if (request != null)
             {
                 request.is_approved = true;
                 _context.Update(request);
-                await _context.SaveChangesAsync();  
+                await _context.SaveChangesAsync();
                 return "Follow Request Accepted";
             }
             else
@@ -215,6 +218,12 @@ namespace Twitter
                 return "Failed to Accept the request";
             }
         }
+        //public async Task<User_entity> GetUserwithFollowers(int myid)
+        //{
+        //    var result = await _context.Users.Include(x => x.follower_in_users);
+
+
+        //}
 
 
         //Reject the Request
@@ -239,7 +248,7 @@ namespace Twitter
         //Show my followers
         public async Task<IList<Follower_entity>> ShowMyFollowers(int myid)
         {
-            var myfollowers =  _context.followers.Where(a => a.user_id==myid && a.is_approved==true).ToList();
+            var myfollowers = _context.followers.Where(a => a.user_id == myid && a.is_approved == true).ToList();
             if (myfollowers.Count == 0)
             {
                 return new List<Follower_entity>();
@@ -247,20 +256,20 @@ namespace Twitter
             else
             {
                 return myfollowers;
-                
+
             }
-            
-            
-            
+
+
+
         }
 
         //Unfollow 
         public async Task<string> Unfollow(int myid, int followerid)
         {
-            var myfollower =  _context.followers
-                .Where(a=> a.user_id== followerid && a.follower_Id== myid)
+            var myfollower = _context.followers
+                .Where(a => a.user_id == followerid && a.follower_Id == myid)
                 .FirstOrDefault();
-            if(myfollower != null)
+            if (myfollower != null)
             {
                 _context.Remove(myfollower);
                 await _context.SaveChangesAsync();

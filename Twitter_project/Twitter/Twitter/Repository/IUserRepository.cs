@@ -20,6 +20,7 @@ namespace Twitter
         Task<IList<Follower_entity>> ShowMyFollowers(int myid);
         Task<string> Unfollow(int myid, int followerid);
         Task<IEnumerable<TweetsOfMyFollowers>> TweetsofFollowers(int myid);
+       // Task<User_entity> GetUserwithFollowers(int myid);
 
     }
 }

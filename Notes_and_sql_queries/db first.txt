@@ -1,0 +1,3 @@
+Scaffold-DbContext -Connection "name=db"  -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context TwitterContext  -Project DBfirstAgain  -Force
+					
+					  

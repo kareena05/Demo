@@ -3,8 +3,12 @@
     "",
     "\\Twitter",
     "\\Twitter\\Twitter",
+    "\\Twitter\\Twitter\\Controllers",
+    "\\Twitter\\Twitter\\Data",
+    "\\Twitter\\Twitter\\Entities",
+    "\\Twitter\\Twitter\\Models",
     "\\Twitter\\Twitter\\Repository"
   ],
-  "SelectedNode": "\\Twitter",
+  "SelectedNode": "\\Twitter\\Twitter\\Entities\\Tweet_entity.cs",
   "PreviewInSolutionExplorer": false
 }
