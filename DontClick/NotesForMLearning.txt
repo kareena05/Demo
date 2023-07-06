@@ -1,1 +1,281 @@
 https://colab.research.google.com/drive/1e7WwdaMqCLAEIEk2e7BVyFTA98zpWut2#scrollTo=ZY1Z4uAMvhbu&line=2&uniqifier=1
+
+
+it will work check now!
+ok
+Mobile Number is Not Compulsory
+removed requirement.
+let me check
+
+
+where did you make the email unique?
+cool. don't push it rn. Have you tested everything?
+yes 
+
+
+okay then start saakh and let me know if you have any question after lunch will have a meet.
+see, currently i don't have questions as i will start ...then the questions will arise in mind
+and i hope you are going to give me a brief idea about saakh
+
+yes that's y there will be meet to give u a brief and u can start working on it!
+okay...on friday i had a quick overview of saakh, have gone through models and repos to understand the flow and all
+not that deeply i understand the project
+but had an idea
+
+
+cool will see u after lunch !
+okk
+
+
+
+working?
+in dynamic mapping ...body is empty
+cool?
+okk
+now i will try to understand...if not then will tell u 
+yes 
+okk
+
+
+got it?
+wait ....haan result null h isliye 404 ara h 
+pr wo result kyu null hai?
+done
+?
+
+yes done!
+
+
+now their are two task : 
+1. if the entire row is null then we will ignore that row in returing errordata. got it?
+condition likhni hogi in error data?
+in error data nahi .
+
+while returning error data in validatemapping api, if the excel row is empty we will not retiurn that row got it?
+yes
+cool once done let me know willl give another one.
+ooo kkk
+
+
+can i see what ur learning?
+
+
+
+
+Trim value from both end
+which value?
+
+
+
+when excel have spaces on their left and right trim it.
+sorry could not get u
+
+
+
+for example : 
+	Gst : '2AUI '
+	
+	their is a space in the end it should trim it 
+	
+	Gst : '2AUI'
+
+
+achha in the cell...ok got it
+
+remember to check it with int and everything it should not cause any error. And for removing empty row which file u have coded in?
+excel validation service
+
+okay 
+
+
+
+give me the changes i will commit it from my end.
+entire content copy krke de du?
+ file ka
+ yes no is
+ 
+ file bhejde puri.
+ ok..
+ and u checked the output?
+ nope
+ ok
+ wait wait ...check output after 5 mins
+ okay text me .. learning ui?
+ 
+ nope.. i will tell u on another platform
+ wanted to talk about something from last night
+ but didn't text you
+ 
+ 
+ u can always call or hit me up on insta.
+ today i will...surely
+ 
+ 
+ okay when were ur free will talk no issue.. n if u don't understand any concept let me know will teach u on meet!
+ 
+ okkay sureee...
+ 
+ 
+ one more thing if ur applying anything on hrms let me know so i can approve like leaves..u took a leave in june right?
+ 
+ yes...the one 
+ 
+ 
+ apply leave on hrms then ..when u do let me know.
+ acha ok..
+ 
+ 
+ 
+ what ?
+ 
+ watch what i do
+ 
+ seen?
+ yes.. so?
+ so......... is this fine? are these error worth? 
+ 
+ 
+ the error that are defined herre are dependend on business and application u may not worry on this.
+ 
+ ok..that i know...but i thought the data in excel is correct still the errors are coming...but thik h chlo..
+ done from myside.
+ 
+ okay cool .. so the file u send me is ok
+ yes yes
+ 
+ accept anydesk on my laptop
+ 
+ 
+ show me
+ 
+ yes
+ first have a look on customers excel
+ 
+ 
+ show me the code.
+ the value is of object type isliye mene usko toString() kiya h
+ wait on a call
+ okayy
+ 
+ 
+ 
+ did u check this code with dates?
+ no dates k sath nhi kiya check
+ 
+ 
+ 
+ check all the import for this code. 
+ 
+ trimming ka code yahi rkhna h? ya common service?
+ 
+ 
+ 
+ yahi rakhsakte h no issue ... par tujhe every import check karna padega.
+ ok see, integers ya numbers ko to excel automatically space allow nhi krta
+ 
+ 
+ 
+ check it with every possible output like dates and format ... cool? 
+ yes...but sales and payment me to errors aari h correct data me kuch nhi aa raha to kese check kru hua ya nhi?
+ 
+ 
+ kya error aarahi h?
+ 
+ errordata ki errors ...
+ upload karna
+ 
+ 
+ 
+ 
+ use the dynamic mapping with validation got it>
+ han pehle map then validate esa?
+ 
+ 
+ 
+ na uss mapping ka use karke form mai value daal
+ 
+ 
+ like this got it?
+ table name and column name b daalna h?
+ yes. 
+ 
+ 
+ mapping[0] jesa bana h wese.
+ oky
+ banke upload kar error aaye tab bol abhi anydesk close karraha hun
+ han ok
+ 
+ 
+ 
+ match invoice no also...
+ han wait 
+ 10149946
+ 
+ 
+ #revealed
+ stock - 1500
+ clothes - 2 jeans black and blue, 800
+		 - 4-5 tops or t shirt 250*4 = 1000
+		 - if money remain then shoes
+		 -Budget 2500 
+ 4000-2500 -1500= 00 remains to me
+ 
+ 
+ #unrevealed
+ mom - 300
+ 2000-300 = 1700 remains to me
+ 
+ 
+ 
+ household = 500
+ bus expense = 750
+ 4000-1250 = 2750 remains
+ 
+ 
+ 
+Error Code: 1366. Incorrect integer value: 'Demo Company' for column 'customer_company_id' at row 1
+
+Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'saakh_staging.t.company_name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+
+
+Error Code: 1054. Unknown column 't.customer_company_id' in 'on clause'
+Error Code: 1054. Unknown column 'i.payment_status' in 'having clause'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+alternate = true -> 
+ business_id =  customer_company_id
+ company -> c.id = cs.user_company_id
+ 
+ Invoice -> seller_id =       buyer_id=business_id
+
+
+alternate =false ->
+business_id =  user_company_id;
+company -> c.id = cs.customer_company_id
+ Invoice -> seller_id =business_id       buyer_id=
+
+
+

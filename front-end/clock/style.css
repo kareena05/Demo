@@ -1,0 +1,58 @@
+.circle-border{
+    background-color: rgb(89, 24, 164);
+    width: 230px;
+    height: 230px;
+    border-radius: 100%;
+    margin: auto;
+}
+.circle{
+    background-color: aquamarine;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: auto;
+    
+}
+.small-circle{
+    background-color: rgb(8, 8, 8);
+    width: 10px;
+    height:10px;
+    border-radius: 100%;
+    position: relative;
+    margin: auto;
+    top:90px;
+  
+}
+
+#hour,#min,#sec{
+    transform-origin: bottom;
+    background-color: black;
+}
+#min{
+    width: 2px;
+    height: 70px;
+    position: absolute;
+    top: 5%;
+    left: 49.95%;
+    border-radius: 2px;
+
+    
+}
+#hour{
+    width: 3px;
+    height: 60px;
+    position: absolute;
+    top: 7.3%;
+    left: 49.95%;
+    border-radius: 4px;
+
+    
+}
+#sec{
+    width: 1.5px;
+    height: 75px;
+    position: absolute;
+    top: 4%;
+    left: 49.95%;
+
+}

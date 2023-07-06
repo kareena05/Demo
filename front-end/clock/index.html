@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="circle-border">
+            <div class="circle">
+                <div class="small-circle"></div>
+                <div id="min"></div>
+                <div id="hour"></div>
+                <div id="sec"></div>
+            </div>
+        </div>
+    </div>
+       
+    </div>
+    <script>
+        setInterval(() => {
+            var d = new Date();
+            d.setHours=2;
+            var hour = document.getElementById('hour');
+            var min =document.getElementById('min');
+            var sec = document.getElementById('sec');
+         
+            var hour_deg= d.getHours()*30;
+            var min_deg = d.getMinutes()*6;
+            var sec_deg = d.getSeconds()*6;
+
+            hour.style.transform=`rotate(${hour_deg}deg)`;
+            min.style.transform=`rotate(${min_deg}deg)`;
+            sec.style.transform=`rotate(${sec_deg}deg)`;
+            
+        }, 1000);
+    </script>
+</body>
+</html>
