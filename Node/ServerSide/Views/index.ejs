@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McD Home</title>
+</head>
+<body>
+ 
+
+   <!-- here the '-'  is used instead of '=' bcoz 
+     '-' means rendering the html content
+    '=' means evaluate values
+    '< only %  ' means just JS....loops and all  -->
+
+<%-  include('common/navbar.ejs') %>
+
+    Morning Good Techies!
+    <h3>
+       <%   obj.forEach((i)=>{  %>
+            <li> <%= i.name %></li>
+       <%   })  %>
+    </h3>
+</body>
+</html>

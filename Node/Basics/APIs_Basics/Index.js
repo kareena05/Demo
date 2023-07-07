@@ -11,4 +11,7 @@ res.end(JSON.stringify(data));
 
 
 
+
+//command line input
+//by default returns two arguments son if you add your custom input it will be stored i  argv[2] and so on
 console.log(process.argv[2]);
