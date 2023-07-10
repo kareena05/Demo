@@ -1,0 +1,1749 @@
+{
+	"info": {
+		"_postman_id": "10dd32e6-d022-4c56-a176-755be0e033bc",
+		"name": "NBLAI06",
+		"description": "#### _Common paramters passed in APIs:_\n\n**cmd - name of command to send**\n\n**Sn - Serial Number of a device**\n\n**enrollid - Enroll Id of the user**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15537924",
+		"_collection_link": "https://solar-eclipse-154060.postman.co/workspace/timmy~0a6586bd-03fd-41d8-9566-1c70cda52f00/collection/15537924-10dd32e6-d022-4c56-a176-755be0e033bc?action=share&creator=15537924&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Device",
+			"item": [
+				{
+					"name": "Device Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DeviceSn\" : [\r\n        \"AIQC30006877\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/DeviceInfo",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"DeviceInfo"
+							]
+						},
+						"description": "#### **API for getting Device Information**\n\n_**Parameters:**_\n\n**DeviceSn - Serial Number of the device**"
+					},
+					"response": [
+						{
+							"name": "Device Info",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"DeviceSn\" : [\r\n        \"AIQC30006877\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/DeviceInfo",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"DeviceInfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:22:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": [\n        {\n            \"sn\": \"AIQC30006877\",\n            \"cpusn\": null,\n            \"devinfo\": {\n                \"modelname\": \"AiFace\",\n                \"facesize\": 5000,\n                \"uface\": 0,\n                \"netinuse\": 1,\n                \"usersize\": 5000,\n                \"fpsize\": 0,\n                \"cardsize\": 5000,\n                \"pwdsize\": 5000,\n                \"logsize\": 500000,\n                \"useduser\": 9,\n                \"usedfp\": 0,\n                \"usedcard\": 2,\n                \"usedpwd\": 5,\n                \"usedlog\": 152,\n                \"usednewlog\": 17,\n                \"fpalgo\": \"thbio3.0\",\n                \"firmware\": \"AiF43V_v4.08\",\n                \"time\": \"2023-05-23T19:40:17\",\n                \"mac\": \"00-01-A9-19-5E-8E\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Open Door",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sn\": \"AIQC30006877\",\r\n    \"cmd\": \"Opendoor\",\r\n    \"doornum\": 1 //this just for access controller(1~4) because access controller have 4 doors.\r\n//If delete the item, will open all doors. Normal access or attendancemachine no need this item\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/OpenDoor",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"OpenDoor"
+							]
+						},
+						"description": "#### **API to Inform termnial to Open the door**\n\n_**parameters:**_\n\n**doornum - Door number to open**"
+					},
+					"response": [
+						{
+							"name": "Open Door",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"sn\": \"AIQC30006877\",\r\n    \"cmd\": \"Opendoor\",\r\n    \"doornum\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/OpenDoor",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"OpenDoor"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:22:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				}
+			],
+			"description": "### **Contains APIs for all device-related information.**"
+		},
+		{
+			"name": "Logs",
+			"item": [
+				{
+					"name": "Get New Logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"getnewlog\",\r\n    \"stn\": true,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetNewLogs",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetNewLogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"cmd\": \"getalllog\",\r\n    \"stn\": true,\r\n    \"from\": \"2018-11-01\",//option from date\r\n    \"to\": \"2023-12-30\", //option to date\r\n    \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetAllLogs",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetAllLogs"
+							]
+						},
+						"description": "**API to retrieve All the logs**\n\n_**parameters:**_\n\n**from - the date from you want to obtain the logs.**\n\n**to - the date up to which you want to get the logs.**"
+					},
+					"response": []
+				},
+				{
+					"name": "Clean All Logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"cleanlog\",\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/CleanAllLogs",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"CleanAllLogs"
+							]
+						},
+						"description": "**API to clean all the logs**\n\n**Note: This command will clear all the logs**"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Logs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\":\"getuserlog\",\r\n    \"devicesn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetUserLogs",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetUserLogs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User Logs",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\":\"getuserlog\",\r\n    \"devicesn\":\"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/GetUserLogs",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"GetUserLogs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 05:21:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"sendLog\": {\n            \"device\": {\n                \"sn\": \"AIQC30006877\",\n                \"cpusn\": null,\n                \"id\": 1\n            },\n            \"deviceId\": 1,\n            \"count\": 1,\n            \"logindex\": 0,\n            \"created\": \"2023-05-29T16:51:44.7813977\",\n            \"id\": 22\n        },\n        \"sendLogId\": 22,\n        \"enrollid\": 9,\n        \"time\": \"2023-05-29T16:50:57\",\n        \"mode\": 10,\n        \"inout\": 0,\n        \"eventtype\": 0,\n        \"temp\": 0,\n        \"verifymode\": 0,\n        \"myProperty\": 0,\n        \"image\": null,\n        \"id\": 48\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "AccessParameters",
+			"item": [
+				{
+					"name": "Get User Acess Parameter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"getuserlock\",\r\n    \"enrollid\": 5,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetUserAcessParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetUserAcessParameter"
+							]
+						},
+						"description": "**API to retrieve the user's available access parameters**"
+					},
+					"response": [
+						{
+							"name": "Get User Acess Parameter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"getuserlock\",\r\n    \"enrollid\": 5,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/GetUserAcessParameter",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"GetUserAcessParameter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:24:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"{\\\"ret\\\":\\\"getuserlock\\\",\\\"sn\\\":\\\"AIQC30006877\\\",\\\"result\\\":true,\\\"enrollid\\\":5,\\\"weekzone\\\":1,\\\"group\\\":1,\\\"starttime\\\":\\\"2000-01--13466 1193040:00:00\\\",\\\"endtime\\\":\\\"2000-01--13466 1193040:00:00\\\"}\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Acess Parameter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cmd\":\"getdevlock\",\r\n     \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetAcessParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetAcessParameter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set User Acess Parameter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\":\"setuserlock\", \r\n    \"count\":40,\r\n    \"sn\": \"AIQC30006877\",\r\n    \"record\": [\r\n        {\r\n            \"enrollid\":5,\r\n            \"weekzone\": 1,\r\n            \"weekzone2\": 1, // just for access controller door2\r\n            \"weekzone3\": 1,\r\n            \"weekzone4\": 1,\r\n            \"group\": 1,\r\n            \"starttime\": \"2016-03-25 01:00:00\",\r\n            \"endtime\": \"2099-03-25 23:59:00\"\r\n        }\r\n    ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetUserAcessParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetUserAcessParameter"
+							]
+						},
+						"description": "**API that configures the user's access parameters**"
+					},
+					"response": [
+						{
+							"name": "Set User Acess Parameter",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\":\"setuserlock\", \r\n    \"count\":40,\r\n    \"sn\": \"AIQC30006877\",\r\n    \"record\": [\r\n        {\r\n            \"enrollid\":5,\r\n            \"weekzone\": 1,\r\n            \"weekzone2\": 1, // just for access controller door2\r\n            \"weekzone3\": 1,\r\n            \"weekzone4\": 1,\r\n            \"group\": 1,\r\n            \"starttime\": \"2016-03-25 01:00:00\",\r\n            \"endtime\": \"2099-03-25 23:59:00\"\r\n        }\r\n    ]\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/SetUserAcessParameter",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"SetUserAcessParameter"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:26:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User Access Parameter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"deleteuserlock\",\r\n    \"enrollid\": 1,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/DeleteUserAccessPara",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"DeleteUserAccessPara"
+							]
+						},
+						"description": "**API to remove the user-accessible Access Parameters**"
+					},
+					"response": [
+						{
+							"name": "Delete User Access Parameter",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"deleteuserlock\",\r\n    \"enrollid\": 1,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/DeleteUserAccessPara",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"DeleteUserAccessPara"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:27:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Clean All User Access Parameter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"cleanuserlock\",\r\n    \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/CleanAllUserAccessPara",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"CleanAllUserAccessPara"
+							]
+						},
+						"description": "**API to remove each user's access parameters**"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Acess Parameter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"cmd\":\"setdevlock\",\r\n\"opendelay\":5, \r\n\"doorsensor\":0, \r\n\"interlock\":0 ,\r\n\"mutiopen\":0, \r\n\"tryalarm\":0,\r\n\"wgformat\":0, \r\n\"wgoutput\": 0,\r\n\"cardoutput\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetAcessParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetAcessParameter"
+							]
+						},
+						"description": "_**Parameters:**_\n\n**opendelay - open door delay**\n\n**doorsensor - the door sensor type: 0:disable 1:NC(normal close) 2:NO(normal open)**\n\n**alarmdelay - door sensor alarm:when open the door and not close,the time more then1\\~255 minute the access will alarm. 0:disable.**\n\n**threat - theat alarm: 0:disable 1.open the door and alarm 2.just alarm 3.just open the door InputAlarm - 0.disable 1,alarm1 output 2.alarm2 output**\n\n**antpass - 0.disable 1,host machine is inside.2.host machine is outside****interlock - disable.1.enable**\n\n**mutiopen- 0:disable;1\\~4:must 1\\~4 people press finger at the same time to open the door**\n\n**tryalarm - 0:disable 1\\~10:when try press the wrong finger 1\\~10 times ,the access will alarm**\n\n**tamper:0- 0:disable 1.enable**\n\n**wgformat -weigand format 0 :26 1:34**\n\n**wgoutput - weigand output data：0,：enroll id ;1:1+enroll id ;2:device id+enroll id cardoutput - if this user register a rfid card,they press finger ,weigand directly output rfidcard number;0:disable;1:enable;**"
+					},
+					"response": []
+				}
+			],
+			"description": "**Contains APIs about User Access Parameters**"
+		},
+		{
+			"name": "Terminal Parameters",
+			"item": [
+				{
+					"name": "Get Terminal Parameter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cmd\":\"getdevinfo\",\r\n     \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetTerminalParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetTerminalParameter"
+							]
+						},
+						"description": "**API To obtain the Terminal Access Parameters**"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Terminal Parameter",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"setdevinfo\",\r\n    \"deviceid\": 1, //Termial id\r\n    \"language\": 0, //as the tips option below\r\n    \"volume\": 0, //0~10 default:6\r\n    \"screensaver\": 0, // 0:no screensaver 1~255 :when inopration wait for 1~255 seconds and thengo to screensaver. \"verifymode\":0, //opotion as show on tips below.\r\n    \"sleep\": 0,\r\n    \"userfpnum\": 3, //how many fingerprints per user 1~10，default:3\r\n    \"loghint\": 1000, //when the logs will full less then 1000 ,and the terminal will hint;0:no hint “reverifytime”:0 //reverify time 0~255 minute\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetTerminalParameter",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetTerminalParameter"
+							]
+						},
+						"description": "**API for configuring Terminal Access Parameters**"
+					},
+					"response": []
+				},
+				{
+					"name": "SetTime",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"settime\",\r\n    \"cloudtime\": \"2016-03-25 13:49:30\",\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetTime",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetTime"
+							]
+						},
+						"description": "**API for configuring Terminal's date and time**\n\nEndFragment"
+					},
+					"response": []
+				}
+			],
+			"description": "**Contains APIs to get and set the terminal's access parameters**"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User Name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"getusername\",\r\n    \"enrollid\":9,\r\n    \"sn\": \"AIQC30006877\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetUserName",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetUserName"
+							]
+						},
+						"description": "**API to retrieve the user name**"
+					},
+					"response": [
+						{
+							"name": "Get User Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"getusername\",\r\n    \"enrollid\":9,\r\n    \"sn\": \"AIQC30006877\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/GetUserName",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"GetUserName"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:28:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Enable User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"cmd\":\"enableuser\",\r\n \"enrollid\":502, \r\n \"enflag\":true,\r\n \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/EnableDisableUser",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"EnableDisableUser"
+							]
+						},
+						"description": "**API to enable the user**"
+					},
+					"response": [
+						{
+							"name": "Enable User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"cmd\":\"enableuser\",\r\n \"enrollid\":502, \r\n \"enflag\":true,\r\n \"sn\":\"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/EnableDisableUser",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"EnableDisableUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:30:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Disable User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"cmd\":\"enableuser\",\r\n \"enrollid\":502, \r\n \"enflag\":false,\r\n \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/EnableDisableUser",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"EnableDisableUser"
+							]
+						},
+						"description": "**APIs that allows to make users disable**"
+					},
+					"response": [
+						{
+							"name": "Disable User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"cmd\":\"enableuser\",\r\n \"enrollid\":502, \r\n \"enflag\":false,\r\n \"sn\":\"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/EnableDisableUser",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"EnableDisableUser"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:30:26 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Set User Info",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"setuserinfo\",\r\n    \"enrollid\": 505,\r\n    \"name\": \"Nick\",   \r\n    \"backupnum\": 10,\r\n    \"admin\": 0,\r\n    \"record\": 12345678,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetUserInfo",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetUserInfo"
+							]
+						},
+						"description": "**API to change user information such as name, backup number, password, or even create a new user with these details**"
+					},
+					"response": [
+						{
+							"name": "Set User Info",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"setuserinfo\",\r\n    \"enrollid\": 505,\r\n    \"name\": \"Nick\",   \r\n    \"backupnum\": 10,\r\n    \"admin\": 0,\r\n    \"record\": 12345678,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/SetUserInfo",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"SetUserInfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:56:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"getuserlist\",\r\n    \"stn\": true,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetUserList",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetUserList"
+							]
+						},
+						"description": "**API that returns a list of all users**"
+					},
+					"response": [
+						{
+							"name": "Get User List",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"getuserlist\",\r\n    \"stn\": true,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/GetUserList",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"GetUserList"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:57:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "enrollid",
+									"value": "502",
+									"type": "text"
+								},
+								{
+									"key": "cmd",
+									"value": "getuserinfo",
+									"type": "text"
+								},
+								{
+									"key": "backupnum",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "sn",
+									"value": "AIQC30006877",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/GetUserInfo",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"GetUserInfo"
+							]
+						},
+						"description": "**API to retrieve user data, including enrol id, username, backup number, password, and whether the user has administrator rights**"
+					},
+					"response": [
+						{
+							"name": "Get User Info",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "enrollid",
+											"value": "502",
+											"type": "text"
+										},
+										{
+											"key": "cmd",
+											"value": "getuserinfo",
+											"type": "text"
+										},
+										{
+											"key": "backupnum",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "sn",
+											"value": "AIQC30006877",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/GetUserInfo",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"GetUserInfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:57:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": {\n        \"sn\": null,\n        \"enrollid\": 502,\n        \"name\": \"Kesha\",\n        \"backupnum\": 11,\n        \"admin\": 0,\n        \"deviceid\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Set User Name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"setusername\",\r\n    \"count\": 50,// must less then 50 record per package\r\n    \"record\": [\r\n        {\r\n            \"enrollid\": 103,\r\n            \"name\": \"Serena\"\r\n        }\r\n    ],\r\n    \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/SetUserName",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"SetUserName"
+							]
+						},
+						"description": "**API to Set or Change the Name of existing user**"
+					},
+					"response": [
+						{
+							"name": "Set User Name",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"setusername\",\r\n    \"count\": 50,\r\n    \"record\": [\r\n        {\r\n            \"enrollid\": 103,\r\n            \"name\": \"Serena\"\r\n        }\r\n    ],\r\n    \"sn\":\"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/SetUserName",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"SetUserName"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:58:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User Info",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"deleteuser\",\r\n    \"enrollid\": 502,\r\n    \"backupnum\": 11, //0~9 fp; 10: password 11:card // 12 for all fp // 13 for all\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/DeleteUserInfo",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"DeleteUserInfo"
+							]
+						},
+						"description": "StartFragment\n\n**API to Delete the user information**\n\nEndFragment"
+					},
+					"response": [
+						{
+							"name": "Delete User Info",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cmd\": \"deleteuser\",\r\n    \"enrollid\": 502,\r\n    \"backupnum\": 11,\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/DeleteUserInfo",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"DeleteUserInfo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:59:09 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Clean All Users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// Server send message：\r\n{\r\n    \"cmd\": \"cleanuser\",\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/CleanAllUsers",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"CleanAllUsers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Contains APIs for carrying out operations on user data.**"
+		},
+		{
+			"name": "Clear System data",
+			"item": [
+				{
+					"name": "Clean All Admins",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cmd\":\"cleanadmin\",\r\n     \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/CleanAllAdmins",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"CleanAllAdmins"
+							]
+						},
+						"description": "**API to remove admin acsess from all users**\n\n**Note: this command will change all admin to normal user.**"
+					},
+					"response": [
+						{
+							"name": "Clean All Admins",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"cmd\":\"cleanadmin\",\r\n     \"sn\":\"AIQC30006877\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://192.168.0.111:1787/CleanAllAdmins",
+									"protocol": "https",
+									"host": [
+										"192",
+										"168",
+										"0",
+										"111"
+									],
+									"port": "1787",
+									"path": [
+										"CleanAllAdmins"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 May 2023 11:59:27 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"data\": \"Message Successfully Sent to Terminal!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reboot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"cmd\":\"reboot\",\r\n     \"sn\":\"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/Reboot",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"Reboot"
+							]
+						},
+						"description": "**API to Reboot the terminal system**\n\n**Note:when terminal receive this message,will reboot immediately,so no repense message. Server send message**"
+					},
+					"response": []
+				},
+				{
+					"name": "Initialize System",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cmd\": \"initsys\",\r\n    \"sn\": \"AIQC30006877\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://192.168.0.111:1787/InitializeSystem",
+							"protocol": "https",
+							"host": [
+								"192",
+								"168",
+								"0",
+								"111"
+							],
+							"port": "1787",
+							"path": [
+								"InitializeSystem"
+							]
+						},
+						"description": "StartFragment\n\n**Note: intialize system will delete all users and all logs,and the setting still not change**\n\nEndFragment"
+					},
+					"response": []
+				}
+			],
+			"description": "**Contains APIs to reset the system, initialise the entire system, and remove admin access from all users.**"
+		}
+	]
+}

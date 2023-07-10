@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>input types</title>
+    
+</head>
+<body>
+    <form action="">
+        <table>
+            <tr>
+                <td>
+                    range:
+                </td>
+                <td>
+                    <input type="range" name="" id="">
+                </td>
+            </tr>
+        </table>
+
+        <div class="main_container">
+            <div class="pagination">
+            <ul>
+            <li><a href="#"></a>1</li>
+            <li><a href="#"></a>2</li>
+            <li class="active"><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            </ul>
+            </div>
+            </div>
+        <script>
+
+           function say(greeting,exc){
+            return greeting+" "+this.name+ exc;
+           }
+
+           var obj1 = {name: "kareena"};
+           
+            // call
+            document.write("<br>call<br>");
+           var ans = say.call(obj1,"morning","!");
+           document.write(ans);
+          
+
+           //apply
+           document.write("<br>apply<br>");
+           ans = say.apply(obj1,["morning","."]);
+           document.write(ans);
+        
+
+           //bind
+           document.write("<br>bind<br>");
+           ans = say.bind(obj1,"morning","!!!");
+           document.write(ans());
+
+
+           //closures
+           document.write("<br>");
+           function a(){
+            var a =100;
+            function b(){
+                document.write(a);
+            }
+            return b;
+           }
+
+    var res =a();
+    res();
+
+    console.log("called 1");
+    console.log("called 2");
+    console.log("called 3");
+    console.log("called 4");
+    console.log("called 5");
+
+    res();
+
+    document.write("<br>");
+    function outer(){
+        var count=0;
+        return function inner(){
+            document.write(count++);
+        }
+    }
+    var o =  outer();
+    o();
+    o();
+    o();
+    o();
+    var m = outer();
+    m();
+    m();
+    m();
+
+    function Person(name,age){
+        this.name = name;
+        this.age= age;
+    }
+    var p1 = new Person("kareena",15);
+    document.write(p1.name);
+  document.write("<br>");
+  document.write("<br>");
+  document.write("<br>");
+
+  function promiseFun(...args){
+    return new Promise((resolve,reject)=>{
+        if(args.length >3){
+            reject("length is more thann 3");
+        }else{
+            var sum=0;
+            for(var i=0;i<args.length;i++){
+                sum = sum + args[i];
+            }
+            resolve("sum is : "+ sum);
+        }
+    })
+  }
+  var pr = promiseFun(10,20,30);
+  console.log(pr);
+  document.write(pr);
+  
+
+  
+  document.write(y);
+  var y;
+  y=78;
+  //temporal dead zone
+  x=23;
+  document.write(x);
+//   let x; reference error
+  document.write("hey");
+  let hero = {
+    powerLevel: 99,
+    getPower(){
+      return this.powerLevel;
+    }
+  }
+  
+ 
+  let getPower = hero.getPower();
+  document.write(getPower);
+
+
+  function randomFunc(){
+  for(var i = 0; i < 3; i++){
+    setTimeout(()=> console.log(i),1000);
+  }
+}
+randomFunc();
+            
+        </script>
+    </form>
+</body>
+</html>
