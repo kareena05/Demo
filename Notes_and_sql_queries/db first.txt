@@ -1,3 +1,160 @@
 Scaffold-DbContext -Connection "name=db"  -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context TwitterContext  -Project DBfirstAgain  -Force
 					
-					  
+					  'users', 'CREATE TABLE `users` (\n  `id` bigint unsigned NOT NULL AUTO_INCREMENT,\n  `phone_number` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `api_token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `device_type` enum(\'android\',\'iphone\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,\n  `device_token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,\n  `referral_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,\n  `last_selected_company` bigint unsigned DEFAULT NULL,\n  `web_last_selected_company` bigint unsigned NOT NULL,\n  `status` tinyint(1) NOT NULL DEFAULT \'1\',\n  `json_data` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,\n  `register_from` enum(\'manually\',\'tally\',\'quickbook\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'manually\',\n  `called` enum(\'true\',\'false\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'false\',\n  `document_sent` enum(\'true\',\'false\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'false\',\n  `demo_scheduled` enum(\'true\',\'false\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'false\',\n  `remark` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,\n  `contact_added` enum(\'true\',\'false\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'false\',\n  `welcome_sent` enum(\'true\',\'false\') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT \'false\',\n  `created_at` timestamp NULL DEFAULT NULL,\n  `updated_at` timestamp NULL DEFAULT NULL,\n  `deleted_at` timestamp NULL DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `users_phone_number_unique` (`phone_number`)\n) ENGINE=InnoDB AUTO_INCREMENT=293 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci'
+
+
+
+
+
+
+
+
+
+Scaffold-DbContext "name=db" Microsoft.EntityFrameworkCore.MySql -OutputDir Data -Force
+Scaffold-DbContext "name=default" Microsoft.EntityFrameworkCore.MySql -OutputDir Data -Force
+
+
+
+
+
+
+[18:47] Himanshu Nagar
+
+Scaffold-DbContext -Connection "name=default" -Provider MySQL.EntityFrameworkCore -OutputDir Data -Context SaakhStagingContext -Project saakh -StartupProject saakh -Force
+
+Scaffold-DbContext "server=localhost;database=saakh_staging;uid=root;password=ProEx@2013" Microsoft.EntityFrameworkCore.Mysql -OutputDir Data -Context SaakhStagingContext -Force
+
+
+
+things i don't like about .net
+no clear exceptions
+
+
+ builder.Services.AddDbContext<SaakhStagingContext>(options =>
+            {
+                options.UseMySQL(connectionstring);
+            });
+
+
+
+date ->sales invoice
+500 internal error  while uploading the same excel
+sometimes does not display data on list sales/payment 
+do not display date .
+wrong mapping by clicking on previois button
+
+
+
+headers are not get mapped...-> gross total in invoice-->dimension size is coming wrong
+suppliers and invoice history and list non existing ledger .
+
+https://live-server-11300.wati.io/api/v1/addcontact/91{8888888888}
+https://live-server-11300.wati.io/api/v1/918888888888
+
+
+
+abc comp deb    2000
+goods					2000
+
+
+credit -
+
+
+
+credit ->supplierx1x1
+
+
+
+
+
+
+
+
+local :
+data is not coming in supplier history
+only few records are coming in purchase history.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+user_permission->id = user.id       when user.last_selected_company>1  user_permission.companyid = user.last_selected_company
+company->id=user_permission.companyid 
+category.id =company.main_categoryid
+category.id = company.subcategory_id 
+
+
+
+personal usesr .id = users.id
+
+
+
+address.company id = company.id
+
+
+
+company_product.companyid = companyId
+products.id = company_product.productid
+
+
+
+company.register_from=tally
+
+
+tapiUsers.userid = company.main_user_id
+hit api
+							
+
+cloud + ai + 		
+
+
+
+
+
+
+db changes folder in saakh .net and add those two db changes script files .		
+
+
+
+
+1.ARRAY OF ARRAY 
+2. ARRAY		3
+3,4,5. ARRAY 	2
+
+
+	array(
+	key=> value
+	)
+	
+	
+	
+	
+	
+	debit add customer
+	credit add supplier
+	
+	
+	if debit and credit both are null then  error should be displayed
+	
+	
+	
+	add validation: there should not be data in both debit and credit column
+	
+	
+	
+				CURRENT PRED
+	tata motors :617   617
+	Adani ports: 803 , 793
+	Tata Steel : 121, 118
+	L&T FH : 	 125, 127

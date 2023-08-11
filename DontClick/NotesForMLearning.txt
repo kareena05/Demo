@@ -277,5 +277,49 @@ business_id =  user_company_id;
 company -> c.id = cs.customer_company_id
  Invoice -> seller_id =business_id       buyer_id=
 
+Bug 238: Invocie no/Tds amount should be numeric
+
+Bug 239: CreditDays should be numeric
+
+Bug: Datatypes in ValidateMapping API should not be Null .
+
+all the three bugs solved in commonservices file
+CreditDays , invoice,tds amount ,datatype should not be null
+
+
+
+
+
+{"ret":"sendlog","result":false,"cloudtime":"0001-01-01T00:00:00","nosenduser":false,"reason":null,"count":0,"logindex":0,"access":0}
+
+
+ret":"sendlog", "result":true, “count”:2, //add 2019-03-27
+“logindex”:10, //add 2019-03-27
+"cloudtime":"2016-03-25 13:49:30", “access”:1
+
+
+
+
+
+
+
+
+
+
+
+
+RegisterCommand 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
