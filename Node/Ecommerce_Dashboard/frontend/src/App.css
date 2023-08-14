@@ -1,10 +1,20 @@
-.App {
-  text-align: center;
+.nav-ul{
+  margin: 0;
+  padding: 0;
+  background-color: mediumslateblue;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-ul  li {
+  list-style: none;
+  padding: 10px;
+  display: inline-block;
+ 
+   
+}
+
+.nav-ul li a{
+  text-decoration: none;
+  color: white;
 }
 
 @media (prefers-reduced-motion: no-preference) {
