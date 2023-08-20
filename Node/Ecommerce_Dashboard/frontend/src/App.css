@@ -16,6 +16,15 @@
   text-decoration: none;
   color: white;
 }
+.mylogo{
+  width: 120px;
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.nav-right{
+  text-align: right;
+}
 
 .footer {
   background-color: mediumslateblue;
@@ -54,6 +63,11 @@ margin-left: 10%;
     cursor: pointer;
    
 }
+.login-container{
+  margin-top: 100px;
+  margin-left: 35%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

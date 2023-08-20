@@ -22,7 +22,7 @@ const display = async () => {
         method: "POST",
         body: JSON.stringify({ fullname, email, password }), // Wrap the data in an object
         headers: {
-            'Content-Type': 'application/json' // Use 'Content-Type' instead of 'content-type'
+            'Content-Type': 'application/json' 
         },
     });
     result = await result.json();
