@@ -14,8 +14,7 @@ const Navbar = () => {
             <ul className="nav-ul">
                 <li><Link to="/" >Home</Link></li>
                 <li><Link to="/contact" >Contact</Link></li>
-                <li><Link to="/add" >Add Product</Link></li>
-                <li><Link to="/update" >Update Product</Link></li>
+                <li><Link to="/addProducts" >Add Product</Link></li>               
                 <li><Link to="/profile" >Profile</Link></li>
                 <li><Link onClick={LogOut} to="/signup" >Logout</Link></li>
 
