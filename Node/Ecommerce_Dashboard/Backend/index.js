@@ -84,4 +84,17 @@ app.put("/updateProduct/:id",async(req,res)=>{
     
 });
 
+app.get("/search/:key",async(req,res)=>{
+    var result = await Product.find({
+        $or:[
+            {productName: {$regex: req.params.key}},
+            {category:{$regex : req.params.key}},
+            {company:{$regex : req.params.key}},
+            
+            
+        ]
+    });
+    res.send(result);
+});
+
 app.listen(5000);

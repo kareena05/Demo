@@ -41,6 +41,14 @@
 .signup-heading{
 margin-left: 10%;
 }
+.search-box{
+  margin-left: 14%;
+    width: 450px;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid mediumslateblue;
+    margin-bottom: 20px;
+}
 .product-table th{
   border: 1px solid mediumslateblue;
   background-color: mediumslateblue;

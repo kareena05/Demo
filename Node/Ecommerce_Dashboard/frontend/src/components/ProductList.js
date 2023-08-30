@@ -29,10 +29,25 @@ const ProductList = () => {
     }
     console.log("Product List", products);
 
+    const searchHandler = async(event)=>{
+        let key = event.target.value;
+        console.warn("areeeeeeeee",key);
+        if(key){
+            let result = await fetch(`http://localhost:5000/search/${key}`);
+            result = await result.json();
+            console.log(result);
+            SetProducts(result);
+        }else{
+            getProducts();
+        }
+        
+    }
+
     return (
         <div className='signup-container'>
             <h1>Welcome to Easy Commerce  {localdata ? JSON.parse(localdata).data.fullname : ""}</h1>
-            <table className='product-table'>
+            <input type="text" className="search-box" placeholder='Search Product' onChange={searchHandler}/>
+            <table className='product-table' >
                 <thead>
                     <tr>
                         <th>SNo.</th>
