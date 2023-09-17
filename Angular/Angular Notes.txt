@@ -1,0 +1,151 @@
+install angular cli-
+npm install -g @angular/cli
+
+
+check version of angular
+ng version
+
+create new project
+ng new blog
+
+
+run project
+ng serve 
+
+package.json
+has the details that which command will build ,test the project,has the names and versions of libraries that are installed
+
+nodemodules-
+has the libraries
+
+when u use npm install node_modules folder will be re-installed(ex:another person takes the pull or you accidently delete the node_modules folder
+)
+
+src folder-
+developer does its 99% work in this directoryx
+
+app-has component files
+assets-css or image files
+
+environment-for deploying(create build to test,create a build for live)
+index.html - file that loads first
+main.js -> connects the  index file to have an angular code
+
+package.lock.json->has the detailed dependencies of a library in package .json
+
+angular.json
+configuragation file
+by default which html css js typescript files will run 
+ 
+tsconfig-typescript configuration
+
+tsconfig.json->global configuration
+tsconfig-app.json->application level configuration
+tsconfig-spec.json->testing level configuration
+
+browserlistrc->which browsers do we support
+
+karma.config.js->to write testcases for testing
+
+polyfills-> adds libraries to support the browser that is giving weird output 
+
+interpolation->displaying dynamic data to from ts file to html pages
+ts file can have properties,functions etc
+you can write js code to call the function from ts file or to print the value of property
+{{getName()}}   {{title}} 
+-you can use the value of ts variable as a class
+
+
+things you can't do with interpolation:
+-assignement operator does not work,you can't assign value to ts property
+-you can't check the typeof variable
+-increament, decrement operator does not work
+-you can't use new keyword  
+
+
+
+you can do the things with command line rapidly
+creating components,library etc rather than doing it manually
+ 
+
+command to generate component
+ng generate component login
+or
+ng g c login
+
+the above command generates 4 files that are necessary to create component
+
+module apne aap me ek feature hota h
+module is complex than component
+ex:register module can have multiple components like signup,login,logout etc
+
+
+ng generate module [modulename]
+ng g m userAuth
+ng g c userAuth/signup
+
+
+what is build?
+build kese bnate hai?
+
+command ->ng build
+we create a minified file and put it on server so that are app can run on server
+
+
+create component and use it as an html tag 
+by refering it by its selector name , you will find selector name in component's ts file 
+
+you can change name of the selector in ts file
+
+
+css file in component will not be generated using below command
+(use this approach when you don't need much css)
+ng g c login --inline-style
+(you can write css in the ts file itself)
+
+html file in component will not be generated using below command
+(use this approach when you don't need much html)
+ng g c login --inline-template
+(you can write html in the ts file itself)
+(ex: search box)
+
+if you want html and css in a single file , use
+ng g c login --inline-template --inline-style 
+
+after creating a module register it in app.module.ts in imports section
+
+
+and to allow you component inside your module to be publicly available you have to export it inside the exports
+
+<input type="text" placeholder="Enter name" #box3 (keydown)="getVal(box3.value)"/>
+
+
+give id like this: #box
+access value of name property or placeHolder property or the value of input
+box.name
+box.placeholder
+box.value	
+
+
+
+you can place the css in global style.css file that is common 
+
+inline css > component css > global css
+priority of css:
+
+
+property binding is for setting properties of HTML elements(like src,disabled , href etc), while interpolation is for inserting dynamic values directly into the text content of HTML elements. Both techniques are ways to display dynamic data in Angular templates
+
+Interpolation creates problem while working with boolean values
+
+
+there is no option for else if else if conditions in angular u have to use the <Sng-template [ngIf]="color==='green'">
+
+angular for loop and js for loop both are different . js loop can be used in ts file
+
+h1 [style.color]="color"
+here color is the property from ts file
+and
+h1 [style.color]=" 'color' "
+
+here color is treated as it is	 
