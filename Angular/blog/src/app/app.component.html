@@ -1,9 +1,75 @@
-
 <app-header></app-header>
 
+<!-- two way binding -->
+<!-- getting and updating the data at a same time using ngModel -->
+
+<input type="text" name="name" [(ngModel)]="name">
+<!-- Pipe Line -->
+<h1>{{name | uppercase}}</h1>
+<h1>{{name | slice :3:6}}</h1>
+<h1>{{235.98989090 | number:'4.4-8' }}</h1>
+<h1>{{235.98989090 | currency:"USD" }}</h1>
+<h1>{{235.98989090 | currency:"INR" }}</h1>
+<!-- custom pipe -->
+<h1>{{2 | usdInr:72 }}</h1>
+<!-- <h1>{{userDetails | json }}</h1> -->
 
 
 
+
+<!-- send data from parent to child -->
+<!-- <app-child [parentData]="color"></app-child>
+<ul *ngFor="let i of userDetails">
+    <li><app-child [userItem]="i"></app-child></li>
+</ul> -->
+
+<!-- send data from child to parent -->
+<!-- <h1>{{name}}</h1>
+<app-child (userDataEvent)="getVal($event)"></app-child> -->
+
+
+
+
+
+<!-- todo list -->
+<!-- <input type="text" value="" placeholder="New Task" #task>
+<br>
+<br>
+<input type="button" value="Add Task" (click)="AddTask(task.value)">
+
+
+<ul *ngFor="let item of taskList">
+    <li>{{item.Task}} <input type="button" value="Remove Task" (click)="RemoveTask(item.id)">  </li>
+</ul> -->
+
+
+
+<!-- bootstrap -->
+<!-- <p>
+	<ngb-alert [dismissible]="false">
+		<strong>Warning!</strong> Better check yourself, you're not looking too good.
+	</ngb-alert>
+</p>
+<h1 *ngIf="show">I'm toggle</h1>
+<button type="submit" (click)="toggle()">Show/Hide</button> -->
+
+
+<!-- Material UI -->
+<!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
+
+
+<!-- basic form -->
+<!-- <form #basicForm="ngForm"  (ngSubmit)="getFormData(basicForm.value)" action="" method="post">
+    <input type="text" ngModel placeholder="Enter name" name="name"><br><br>
+    <input type="text" ngModel placeholder="Enter Email" name="email"><br><br>
+    <input type="text" ngModel placeholder="Enter phone Number" name="phone"><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<ul>
+    <li>{{formData.name}}</li>
+    <li>{{formData.email}}</li>
+</ul> -->
 
 
 

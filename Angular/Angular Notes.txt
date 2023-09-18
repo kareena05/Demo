@@ -149,3 +149,59 @@ and
 h1 [style.color]=" 'color' "
 
 here color is treated as it is	 
+
+
+install bootstrap
+command->
+ ng add @ng-bootstrap/ng-bootstrap
+
+
+Material UI 
+ng add @angular/material
+material ui gives a rich look ...but heavier than bootstrap
+
+Jis component ki html file ke content me aap function call kar re ho usi component ki ts file me apko function define krna h
+
+ two way binding 
+getting and updating the data at a same time using ngModel 
+
+<input type="text" name="name" [(ngModel)]="name">
+
+#box is a template reference variable
+
+input output decorative 
+
+browser does not understand typescript
+
+angular converts the ts to js
+ts is preferable over js bcoz we can specify the datatypes of values so we won't get runtime errors
+
+
+define two datatypes
+item:number | boolean
+
+Define object type
+item:{name:string,age:Number}
+
+Define array type
+item:String[]
+
+Pipes:
+are used to transform the data
+ex: make string caseSensitive,currency manipulation etc
+ pipes are only used in html not in ts file
+pipe without parameter
+{{name | uppercase }}
+
+pipe with parameter
+{{today | date:'fulldate'}}
+
+
+<h1>{{235.98989090 | number:'4.4-8' }}</h1>
+
+
+4 character minimum before decimal point
+4-8 characters after decimal
+
+create custom pipe
+ng g p usd-inr

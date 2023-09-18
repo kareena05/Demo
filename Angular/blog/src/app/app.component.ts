@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent {
     {name:"Peter",mobile:"9090",email:"peter@test.com",social:["instagram","facebook","Youtube"]},
     {name:"Sam",mobile:"9191",email:"sam@test.com",social:["Yahoo","Twitter","Snapchat"]}
   ]
+  taskList:any[]=[]
+  formData:any={};
   getData(val:string){
     console.log("Hello " + val);
   }
@@ -31,5 +34,18 @@ export class AppComponent {
   setEnable(){
     this.isDisabled=false
   }
-
+  getFormData(data:NgForm){
+    console.log("form data",data);
+    this.formData=data;
+  }
+  toggle(){
+    this.show = !this.show;
+  }
+  AddTask(task:string){
+    this.taskList.push({id:this.taskList.length+1,Task:task});
+    console.log(this.taskList);
+  }
+  RemoveTask(id:number){
+    this.taskList = this.taskList.filter(x=>x.id != id);
+  }
 }

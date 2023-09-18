@@ -1,0 +1,9 @@
+<p>child works!  {{parentData}}</p>
+<ul>
+    <li>{{userItem.name}}</li>
+    <li>{{userItem.email}}</li>
+</ul>
+
+<h1>Data from child to parent</h1>
+<input type="text" name="" id="" #box>
+<button (click)="userDataEvent.emit(box.value)">show data</button>
