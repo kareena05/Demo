@@ -205,3 +205,30 @@ pipe with parameter
 
 create custom pipe
 ng g p usd-inr
+
+types of forms:
+
+1. template driven -     template means html file
+2. Reactive from   -     class means ts file
+
+
+when we do    name="username" #loginform (ngSubmit)=login(loginform.value)
+we need to bind the input fields with this form by using ngModel in a input field
+to hi uss field ki value jaaegi 
+name of input is required otherwise whose value will be sent
+
+(ngSubmit)=login(loginform.value.controlls) -> fields with name and value
+not necesarily to use with ng submit only (ngSubmit)=login(loginform.value)
+it will work on click also
+
+
+
+Reactive forms:
+to use reactive form 
+import { NgForm,FormControl,FormGroup } from '@angular/forms';
+is necessary in app.component.cs
+
+formGroup control entire form
+formControl controls the form field
+
+you must have a from control property of the same name as the form control name on input field

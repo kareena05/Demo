@@ -1,17 +1,36 @@
 <app-header></app-header>
 
+<!-- Reactive form -->
+<form [formGroup]=loginForm action="" method="post" (ngSubmit)="login()" >
+    <input type="text" formControlName="username"  placeholder="enter name"><br>
+    <input type="text" formControlName="password"  placeholder="enter password">
+    <br>
+    <button>login</button>
+</form>
+
+
+
+
 <!-- two way binding -->
 <!-- getting and updating the data at a same time using ngModel -->
 
-<input type="text" name="name" [(ngModel)]="name">
+<!-- <input type="text" name="name" [(ngModel)]="name"> -->
+
+<!-- template driven form -->
+<!-- <form action="" method="post" #loginForm="ngForm" (ngSubmit)=getAnyFormData(loginForm.value)>
+    <input type="text" name="username" id="" ngModel placeholder="enter name"><br>
+    <input type="text" name="password" id="" ngModel placeholder="enter password">
+    <br>
+    <button>login</button>
+</form> -->
 <!-- Pipe Line -->
-<h1>{{name | uppercase}}</h1>
+<!-- <h1>{{name | uppercase}}</h1>
 <h1>{{name | slice :3:6}}</h1>
 <h1>{{235.98989090 | number:'4.4-8' }}</h1>
 <h1>{{235.98989090 | currency:"USD" }}</h1>
-<h1>{{235.98989090 | currency:"INR" }}</h1>
+<h1>{{235.98989090 | currency:"INR" }}</h1> -->
 <!-- custom pipe -->
-<h1>{{2 | usdInr:72 }}</h1>
+<!-- <h1>{{2 | usdInr:72 }}</h1> -->
 <!-- <h1>{{userDetails | json }}</h1> -->
 
 

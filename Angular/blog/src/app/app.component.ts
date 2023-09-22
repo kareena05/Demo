@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm,FormControl,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,14 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   title = 'blog';
+  loginForm=new FormGroup({
+    username:new FormControl('Default name',[Validators.required]),
+    password : new FormControl('22')
+  })
+ login(){
+  console.log(this.loginForm.value);
+ }
+
   audience="Techies"
   name=""
   isDisabled=false
@@ -35,6 +43,10 @@ export class AppComponent {
     this.isDisabled=false
   }
   getFormData(data:NgForm){
+    console.log("form data",data);
+    this.formData=data;
+  }
+  getAnyFormData(data:any){
     console.log("form data",data);
     this.formData=data;
   }
