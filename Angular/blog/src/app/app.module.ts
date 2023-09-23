@@ -10,12 +10,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ChildComponent } from './child/child.component';
 import { UsdInrPipe } from './pipes/usd-inr.pipe';
+import { RedElementDirective } from './red-element.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ChildComponent,
     UsdInrPipe,
+    RedElementDirective,
     
   ],
   imports: [

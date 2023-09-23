@@ -9,12 +9,20 @@ import { NgForm,FormControl,FormGroup, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'blog';
   loginForm=new FormGroup({
-    username:new FormControl('Default name',[Validators.required]),
-    password : new FormControl('22')
+    // username:new FormControl('Default name',[Validators.required]),
+    username:new FormControl('',[Validators.required,Validators.email]),
+    password : new FormControl('',
+    [Validators.required,Validators.minLength(5)])
   })
  login(){
   console.log(this.loginForm.value);
  }
+ get user(){
+   return this.loginForm.get('username');
+ }
+ get pass(){
+  return this.loginForm.get('password');
+}
 
   audience="Techies"
   name=""

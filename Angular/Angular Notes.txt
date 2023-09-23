@@ -232,3 +232,50 @@ formGroup control entire form
 formControl controls the form field
 
 you must have a from control property of the same name as the form control name on input field
+
+
+directives:
+ng if ,ngfor these are directives
+
+ng g directive redElement
+
+Routing
+const routes: Routes = [
+  {
+    path:'',
+    component:HomeComponent
+  },
+  {
+    path:'about',
+    component:AboutComponent
+  },
+];
+Don't forget to use 
+<router-outlet></router-outlet>
+in html file
+
+
+for dynamic routing
+ {
+    path:'user/:id',
+    component:UserComponent
+  }
+to access userid in ts file
+this.route.snapshot.paramMap.get('id')
+
+this.route is of type ActivatedRoute class
+
+
+for 404 not found
+user path as "**" in routing file
+
+child routing
+suppose main routing is About
+and two more child routes can be about/me
+and about/company
+then you can define them in a children property of about route in routing.ts
+ path:'about',
+    component:AboutComponent,
+    children:[
+      {path:'me',component:AboutMeComponent},
+

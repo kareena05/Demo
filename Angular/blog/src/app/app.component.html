@@ -1,11 +1,13 @@
 <app-header></app-header>
-
+<h1 appRedElement>{{title}}</h1>
 <!-- Reactive form -->
 <form [formGroup]=loginForm action="" method="post" (ngSubmit)="login()" >
+    <span class="headingRed" *ngIf="user && user.invalid && user.touched  "> username field is invalid</span><br>
     <input type="text" formControlName="username"  placeholder="enter name"><br>
+    <span class="headingRed" *ngIf="pass && pass.invalid && pass.touched  ">password field is invalid</span><br>
     <input type="text" formControlName="password"  placeholder="enter password">
     <br>
-    <button>login</button>
+    <button [disabled]="loginForm.invalid">login</button>
 </form>
 
 
