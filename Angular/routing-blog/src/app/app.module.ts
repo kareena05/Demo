@@ -10,6 +10,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { AboutCompanyComponent } from './about-company/about-company.component';
 import { FooterComponent } from './footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SeniorModule } from './senior/senior.module';
+import { SubAdminModule } from './sub-admin/sub-admin.module';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,16 @@ import { FooterComponent } from './footer/footer.component';
     NotfoundComponent,
     AboutMeComponent,
     AboutCompanyComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    SubAdminModule,
+    SeniorModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

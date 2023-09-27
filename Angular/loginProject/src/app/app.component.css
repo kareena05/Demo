@@ -1,0 +1,16 @@
+h1{
+    color: cadetblue;
+    text-align: center;
+}
+.my-container{
+    /* margin: auto; */
+    margin-left: 30%;
+
+}
+.my-btn{
+    margin: 20px;
+    
+}
+form-control{
+   width: 75%;
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserDataServiceService } from '../services/user-data-service.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-
+  users:any=[];
+  constructor(private userdata:UserDataServiceService){
+      //console.log(userdata.userdata());
+      this.users = userdata.userdata();
+  }
 }

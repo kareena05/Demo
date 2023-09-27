@@ -279,3 +279,82 @@ then you can define them in a children property of about route in routing.ts
     children:[
       {path:'me',component:AboutMeComponent},
 
+
+CALL API:
+
+remeber to import httpclientmodule from angular/common/http in
+app.module.ts
+
+
+to create a model of data table
+export interface productModel{
+    productName:string,
+    price:Number,
+    category:string,
+    company:string
+}
+
+use above interface as a datatype
+saveUser(data:productModel)
+
+
+
+Module:
+create a module
+create components inside the modules
+export the components inside the module's ts file
+import the module inside the app component's ts file
+
+
+create a module with routing
+
+ng g m modulename --routing
+routing file for that module will be generated
+or simply copy the app.routing file inside the module just rename it and
+change the   imports: [RouterModule.forRoot(routes)], forRoot to forChild
+
+
+why do we use routing module?
+if we use routing module(the module which has it's own routing file)
+then whenever we use the routing of that module than that specific module will be loaded  no extra modules will be loaded inshort whenever we need it
+else when we use one single routing file (outer side)
+then all the modules will be loaded
+
+the order of importing a module matters
+ imports: [
+    BrowserModule,
+    SubAdminModule,  ->1   or ->2
+    SeniorModule,    ->2   or ->1
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+
+  ],
+
+or the alphabetic order of name matters instead of the order of listing in app.module.ts
+
+
+
+lazy load:
+means the module will be loaded only when you access the route for that module
+create module,create component inside module
+create normal routing in module's routing file {path:"democomp",component="demo"}
+import module in app.module
+create a routing in main routing file as below
+(grouping will be done automatically )(eg. admin/lazydemo, subadmin/lazydemo)
+
+{
+path:"lazy",
+loadChildren:()=>import('./lazy-load/lazy-load.module').then((module)=>
+module.LazyLoadModule)
+  },
+
+
+lazy loading of component:
+viewContainer = viewContainerRef creates a container where the component will be
+loaded
+componentFactoryRef:convert the dynamic code to component
+
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMiIsIm5iZiI6MTY5NTYzMDgxMSwiZXhwIjoxNjk1NzE3MjExLCJpYXQiOjE2OTU2MzA4MTEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcwNzQiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MDc0In0.-YqrcRs14S6_Z7OiRsTTWMZ_NR8eGH-k53Tu_BXf384"
+
+207

@@ -9,6 +9,11 @@ import { AboutCompanyComponent } from './about-company/about-company.component';
 
 const routes: Routes = [
   {
+path:"lazy",
+loadChildren:()=>import('./lazy-load/lazy-load.module').then((module)=>
+module.LazyLoadModule)
+  },
+  {
     path:'',
     component:HomeComponent
   },
