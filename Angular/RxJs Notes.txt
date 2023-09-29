@@ -1,0 +1,65 @@
+Observables:
+		the container which emits/ produces the data(the youtube channel)
+data: 
+		the data emitted by the observable
+Subscribe:
+		when we want to use the data emitted by observables,we subscribe it
+		(the notifications we receive when something changes to data of youtube channel)
+		observable does not produce data untill it is used , inshort jab tk hum subscribe nhi krte / use nhi krte tb tk observable data nhi deta
+css me scss nahi chlta
+scss me css chlta hai
+
+
+
+
+
+no seniors ->
+1. no guidance, no review
+2. very well learning
+3. workload
+
+
+saakh
+bulk journal import
+registeration process APIs
+commitment
+conversion from laravel to .net for getting othet company profiles
+
+
+timmy
+created apis according to the timmy document
+1.saakh
+period: 07/2023
+skills: .NET core, C#
+Descriptions: 
+developed journal bulk import functionality.
+Created entire new project from scratch (for .NET) and developed APIs required for entire registration process.
+developed APIs required for commitment process.
+conversion from Laravel to .NET for getting other company profiles.
+New Learnings: uploading excel and preforming operations on excel data using Json.
+using third party Apis in services
+A proper systematic project structures and standards followed to create a project.
+created necessary tables and models.
+tried to write database queries in an efficient way.
+
+
+2. Timmy
+period: May, June and 10 days of August 10 days 2023
+skills used: .NET core, web sockets,
+Description: created APIs according to the project requirement document
+for adding, updating user details , setting passwords, face ids, Rfid card, user logs
+created necessary tables
+New learning: 
+Web socket, communicating with the device, uploading faces of users using base 64 string format
+etc...
+
+3. Newcomers
+period: September 2023(2-3 days)
+descriptions: created APIs for user registration.
+
+4.Nop commerce
+period: June 2023(7 days)
+description: tried to understand about what the Nop commerce is and how does it works and what does it provides as a ecommerce platform, creating some necessary pop-ups and worked with JavaScript 
+New learnings: the efficient code and a professional database
+
+

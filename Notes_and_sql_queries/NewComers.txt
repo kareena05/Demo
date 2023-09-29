@@ -1,0 +1,5 @@
+User = userOrganizationMapping
+Error Code: 3780. Referencing column 'user_id' and referenced column 'uid' in foreign key constraint 'otp_ibfk_1' are incompatible.
+Scaffold-DbContext "name=DbConString"  MySql.EntityFrameworkCore -Context NewComers_Context -Project NewComers.Data -OutputDir Models -Force
+
+        public const string CompanyDetailsDataNotFound = "Client company details data not found.";

@@ -11,6 +11,7 @@ Scaffold-DbContext -Connection "name=db"  -Provider Microsoft.EntityFrameworkCor
 
 
 Scaffold-DbContext "name=db" Microsoft.EntityFrameworkCore.MySql -OutputDir Data -Force
+Scaffold-DbContext "name=db" Microsoft.EntityFrameworkCore -OutputDir Data -Force
 Scaffold-DbContext "name=default" Microsoft.EntityFrameworkCore.MySql -OutputDir Data -Force
 
 
@@ -24,7 +25,7 @@ Scaffold-DbContext -Connection "name=default" -Provider MySQL.EntityFrameworkCor
 
 Scaffold-DbContext "server=localhost;database=saakh_staging;uid=root;password=ProEx@2013" Microsoft.EntityFrameworkCore.Mysql -OutputDir Data -Context SaakhStagingContext -Force
 
-
+Scaffold-DbContext "name=default" Mysql.EntityFrameworkCore -OutputDir Data -Context SaakhStagingContext -Force
 
 things i don't like about .net
 no clear exceptions
@@ -87,7 +88,8 @@ only few records are coming in purchase history.
 
 
 
-
+final saakh  scaffold command
+Scaffold-DbContext "name=default" MySql.EntityFrameworkCore -OutputDir Data -Force
 
 user_permission->id = user.id       when user.last_selected_company>1  user_permission.companyid = user.last_selected_company
 company->id=user_permission.companyid 
@@ -110,6 +112,7 @@ products.id = company_product.productid
 
 
 company.register_from=tally
+'{"result":{"authorized_signatory":["MOHAMMAD YASIN  SEKH "],"mobile_no":null,"trade_name":"YASIN ENTERPRISE","contact":{"email":"XX.XXXX@XX.XX","mobile_no":9999999999},"gstin":"19HRDPS2603Q1Z3","primary_business_address":{"registered_address":"SUJAPUR SCHOOLPARA, SUJAPUR, BARA SUJAPUR, Malda, West Bengal, 732206"},"legal_name":"MOHAMMAD YASIN SEKH"}}'
 
 
 tapiUsers.userid = company.main_user_id
@@ -158,3 +161,1022 @@ db changes folder in saakh .net and add those two db changes script files .
 	Adani ports: 803 , 793
 	Tata Steel : 121, 118
 	L&T FH : 	 125, 127
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 public async Task<OtpVerificationResponseModel> VerifyOtp(VerifyOtpModel model)
+        {
+            try
+            {
+                var user = await UserExists(model.PhoneNumber);
+
+                var otpVerificationResponse = new OtpVerificationResponseModel();
+
+                if (user != null)
+                {
+                     otpVerificationResponse = await GetCompany(user);
+                    var otpEntity = await _otpRepository.GetEntityByConditionAsync(x => x.UserId == user.Id);
+                    if (otpEntity != null || model.Otp.Equals("123456"))
+                    {
+                        //if (model.Otp.Equals(otpEntity.Otp1))
+                        //{
+                            var token = _authenticationService.CreateToken(user.Id);
+                            user.ApiToken = token;
+                            await _userDetailsRepository.UpdateEntityAsync(user);
+                            otpVerificationResponse.Data.ApiToken= token;
+                        //}
+                         otpVerificationResponse.Message = ErrorMessages.OtpVerified;
+                        return otpVerificationResponse;
+                    }
+                    
+                    
+
+                }
+                 otpVerificationResponse.Message = ErrorMessages.UserNotExist;
+                return otpVerificationResponse;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                SaakhLogger.WriteLog("Info:\t" + DateTime.Now.ToString("MMM dd, yyyy HH:mm:ss.fff") + ex.Message + " : AccountService.cs -> Method name: VerifyOtp : " + ex.StackTrace, "SaakhLog", "WebLogs");
+                throw;
+            }
+}
+AI in id -> user_company_mapping
+removed role_id from user_company_mapping
+not null user_id,company_id -> user_company_mapping
+dropped foreign key userid,companyid -> user_company_mapping
+added roles_mapping table	
+ai on id in roles mapping
+removed not null role_id in roles_mapping
+ai on id company_company_mapping
+relationid null company_company_mapping
+removed foreign key company id from company company mapping
+        
+		Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`saakh_staging`.`company_company_mapping`, CONSTRAINT `company_company_mapping_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companys` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+
+		
+		
+		Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`saakh_staging`.`user_company_mapping`, CONSTRAINT `use_id` FOREIGN KEY (`user_id`) REFERENCES `userdetails` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+
+
+
+
+
+
+
+
+
+
+
+
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`saakh_staging`.`company_company_mapping`, CONSTRAINT `company_company_mapping_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companys` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+
+
+ARHAM ENTERPRISE
+
+
+REGEXP '[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z0-9]{2}Z[A-Z0-9]';
+CREATE DEFINER = CURRENT_USER TRIGGER `saakh_staging`.`users_AFTER_INSERT` AFTER INSERT ON `users` FOR EACH ROW
+BEGIN
+INSERT INTO saakh_staging.users
+(id,phone_number,api_token,device_token,device_type,referral_code,last_selected_company,web_last_selected_company,status,json_data,register_from,called,document_sent,demo_scheduled,remark,contact_added,welcome_sent,created_at,updated_at,deleted_at)
+SELECT id,phone_number,api_token,device_token,device_type,referral_code,last_selected_company,web_last_selected_company,status,json_data,register_from,called,document_sent,demo_scheduled,remark,contact_added,welcome_sent,created_at,updated_at,deleted_at
+FROM userdetails WHERE id = NEW.id;
+END
+
+
+
+
+
+
+CREATE DEFINER = CURRENT_USER TRIGGER `saakh_staging`.`company_info_AFTER_INSERT` AFTER INSERT ON `company_info` FOR EACH ROW
+BEGIN
+INSERT INTO companies(id,tapi_company_id,email,referral_business,referral_agent,company_name,company_type,owner_name,logo_image,phone_number,invoice_count,gst_number,type,referral_code,main_category_id,sub_category_id,other_category,is_verified,verify_status,verify_reject_reason,last_selected_starting_year,last_selected_ending_year,cost_of_capital,credit_days,outstanding_amount,other_software_name,address,status,register_from,view_profile_count,block_invoice_count,last_ledger_sequence_no,last_voucher_sequence_no,last_payment_sequence_no,last_sync_time,total_suppliers_amount,total_customers_amount,show_all,sync_company,last_invoice_no,last_invoice_prefix,earned_coins,earned_balance,scenes_token,created_at,updated_at,deleted_at,login_time,logout_time,total_time)
+SELECT id,tapi_company_id,email,referral_business,referral_agent,company_name,company_type,owner_name,logo_image,phone_number,invoice_count,gst_number,type,referral_code,main_category_id,sub_category_id,other_category,is_verified,verify_status,verify_reject_reason,last_selected_starting_year,last_selected_ending_year,cost_of_capital,credit_days,outstanding_amount,other_software_name,address,status,register_from,view_profile_count,block_invoice_count,last_ledger_sequence_no,last_voucher_sequence_no,last_payment_sequence_no,last_sync_time,total_suppliers_amount,total_customers_amount,show_all,sync_company,last_invoice_no,last_invoice_prefix,earned_coins,earned_balance,scenes_token,created_at,updated_at,deleted_at,login_time,logout_time,total_time
+FROM company_info WHERE saakh_staging.company_info.id = NEW.id;
+END
+
+
+
+
+
+
+CREATE DEFINER = CURRENT_USER TRIGGER `saakh_staging`.`customers_AFTER_INSERT` AFTER INSERT ON `customers` FOR EACH ROW
+BEGIN
+ INSERT INTO company_company_mapping
+ (company_id,related_company_id,relation_id)
+ SELECT (user_company_id,customer_company_id,1) 
+ FROM customers
+ WHERE id = NEW.id;
+END
+
+
+
+
+CREATE DEFINER = CURRENT_USER TRIGGER `saakh_staging`.`user_company_mapping_AFTER_INSERT` AFTER INSERT ON `user_company_mapping` FOR EACH ROW
+BEGIN
+INSERT INTO saakh_staging.roles_mapping
+(user_company_mapping_id,role_id)
+SELECT NEW.id,1;
+END
+
+
+
+
+
+1.company_info after insert
+2.Userdetail after insert
+3.usercompanymapping after insert
+
+
+		string pattern = @"\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}";
+        string input = "12ABCDE1234FZ9";
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        Match match = Regex.Match(input, pattern);
+        
+        if (match.Success)
+        {
+            Console.WriteLine("Match found: " + match.Value);
+        }
+        else
+        {
+            Console.WriteLine("No match found.");
+        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		private async Task<string> CallPostApi(string apiUrl, string token,object requestBody) 
+        {
+            
+            try
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var json = JsonConvert.SerializeObject(requestBody);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync(apiUrl, content);
+                var code = response.StatusCode;
+                if (response.IsSuccessStatusCode)
+                {
+                    // API call succeeded
+                    // Parse and process the response here
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    return responseContent;
+                }
+                else
+                {
+                    return "";
+
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occurred during the API call
+                SaakhLogger.WriteLog("Info:\t" + DateTime.Now.ToString("MMM dd, yyyy HH:mm:ss.fff") + ex.Message + " : AccountService.cs -> Method name: CallAPI : " + ex.StackTrace, "SaakhLog", "WebLogs");
+                Console.WriteLine("Error: " + ex.Message);
+                throw;
+            }
+        }
+		
+		
+		change dbchanges 
+		company info -> referral business and referral agent should be ulong
+		personal user -> iuserid should be ulong
+		comopanyindfo ->LastSelectedStartingYear
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		22/08/2023 tuesday
+		ALTER TABLE `saakh_staging`.`company_details` 
+CHANGE COLUMN `invoice_sent_count` `invoice_sent_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `invoice_receive_count` `invoice_receive_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `invoice_completed_count` `invoice_completed_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `late_payment_days_count` `late_payment_days_count` DECIMAL(8,2) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `avg_late_payment_days` `avg_late_payment_days` DECIMAL(8,2) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `on_time_payment_invoice_count` `on_time_payment_invoice_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `avg_credit_days_count` `avg_credit_days_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `rating_invoice_count` `rating_invoice_count` BIGINT UNSIGNED NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `rating_seller_company_count` `rating_seller_company_count` BIGINT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `rating_buyer_company_count` `rating_buyer_company_count` BIGINT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `delivery_time_rating` `delivery_time_rating` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `product_quality_rating` `product_quality_rating` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `complaint_handling_rating` `complaint_handling_rating` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `professional_behaviour_rating` `professional_behaviour_rating` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `seller_rating` `seller_rating` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `agent_rating_by_seller` `agent_rating_by_seller` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `agent_rating_by_buyer` `agent_rating_by_buyer` DECIMAL(8,1) UNSIGNED NOT NULL DEFAULT 0.0 ,
+CHANGE COLUMN `profile_viewed_count` `profile_viewed_count` DECIMAL(8,2) UNSIGNED NOT NULL DEFAULT 0.0 ;
+
+
+
+created after update trigger for company_info and userdetails
+
+ALTER TABLE `saakh_staging`.`companies` 
+CHANGE COLUMN `verify_reject_reason` `verify_reject_reason` TEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL ,
+CHANGE COLUMN `credit_days` `credit_days` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `last_invoice_no` `last_invoice_no` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `last_invoice_prefix` `last_invoice_prefix` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL ,
+CHANGE COLUMN `earned_coins` `earned_coins` INT NOT NULL DEFAULT 0 ,
+CHANGE COLUMN `earned_balance` `earned_balance` BIGINT NOT NULL DEFAULT 0 ;
+
+
+
+
+
+Error Code: 1442. Can't update table 'company_info' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+
+
+
+
+
+
+save error data
+{
+    "excelImportType": 7,
+    "errorModel": [
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-28T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SSK TOYS",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "CHEQUE RETURN CHARGE",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "36",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 99,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Supplier. Supplier not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-28T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "abc",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "454",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": null,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "D.K.V.K. WHOLESALE TOYS & GIFT CENTRE",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "CHEQUE RETURN CHARGE",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "37",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 500,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "Professional Fees",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "250",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 5500,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "Electricity Expenses",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "251",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 36580,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "253",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 26250,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "255",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 28875,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "NEHAL DINESHCHANDRAKANT SHED/100/73",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "256",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 2888,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "257",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 30000,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "NEHAL DINESHCHANDRAKANT SHED/100/73",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "258",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 3000,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SITABEN  CHIMANLAL PATEL /SHED 99",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "259",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 3000,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "260",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 30000,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "261",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 46000,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "NITABEN CHANDRAKANT PATEL SHED 97/98",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "262",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 4600,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "263",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 14500,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "SHED RENT A/C.",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "264",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 14500,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "Freight",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "265",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 17400,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "Salary Expenses",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "266",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 712500,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Register Customer. Customer not Exist.",
+            "data": [
+                {
+                    "value": "2023-06-30T00:00:00",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": "Freight and Transportation",
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": "Journal",
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": "267",
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 136250,
+                    "excelColumn": "Debit"
+                }
+            ]
+        },
+        {
+            "error": "Error : Vch No. is null",
+            "data": [
+                {
+                    "value": "Total:",
+                    "excelColumn": "Date"
+                },
+                {
+                    "value": null,
+                    "excelColumn": "Particulars"
+                },
+                {
+                    "value": null,
+                    "excelColumn": "Vch Type"
+                },
+                {
+                    "value": null,
+                    "excelColumn": "Vch No."
+                },
+                {
+                    "value": 1116466.6,
+                    "excelColumn": "Debit"
+                }
+            ]
+        }
+    ],
+    "correctData": [],
+    "createData": null,
+    "filePaths": [
+        null,
+        null,
+        null
+    ],
+    "mappings": [
+        {
+            "excelColumn": "Date",
+            "excelAddrress": 1,
+            "tableName": "Voucher",
+            "columnName": "voucherdate",
+            "visibleColumn": "Voucher Date",
+            "dataType": "DateTime",
+            "isRequired": false,
+            "id": 0,
+            "value": "Total:"
+        },
+        {
+            "excelColumn": "Particulars",
+            "excelAddrress": 2,
+            "tableName": "Company",
+            "columnName": "companyname",
+            "visibleColumn": "Organization Name",
+            "dataType": "String",
+            "isRequired": false,
+            "id": 0,
+            "value": null
+        },
+        {
+            "excelColumn": "Vch Type",
+            "excelAddrress": 3,
+            "tableName": "Voucher",
+            "columnName": "vouchertype",
+            "visibleColumn": "Invoice Prefix",
+            "dataType": "String",
+            "isRequired": false,
+            "id": 0,
+            "value": null
+        },
+        {
+            "excelColumn": "Vch No.",
+            "excelAddrress": 4,
+            "tableName": "Voucher",
+            "columnName": "vouchernumber",
+            "visibleColumn": "Invoice No",
+            "dataType": "String",
+            "isRequired": false,
+            "id": 0,
+            "value": null
+        },
+        {
+            "excelColumn": "Debit",
+            "excelAddrress": 5,
+            "tableName": "Voucher",
+            "columnName": "amount",
+            "visibleColumn": "Debit Amount",
+            "dataType": "Double",
+            "isRequired": false,
+            "id": 0,
+            "value": 1116466.6
+        },
+        {
+            "excelColumn": "Credit",
+            "excelAddrress": 6,
+            "tableName": "Voucher",
+            "columnName": "amount",
+            "visibleColumn": "Credit Amount",
+            "dataType": "Double",
+            "isRequired": false,
+            "id": 0
+        }
+    ]
+}
+
+Error Code: 1290. The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+Error Code: 1292. Incorrect datetime value: '"  2;"Kurti & Palazzos' for column 'deleted_at' at row 1
+Error Code: 1366. Incorrect integer value: ' {"category_id":2, "name":"Kurti & Palazzos", "image":"categories/Kurti-and-Palazzos.jpg", "parent_id":0, "sort_order":2, "statu' for column 'category_id' at row 1
+
+
+
+
+is debit
+invoice nahi h to create krna hai
+hai to already exist
+
+
+is credit 
+nahi hai to no invoice
+
+
+
+Error Code: 1442. Can't update table 'company_info' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+
+
+case ExcelImportType.Customer or ExcelImportType.Supplier:
+                    companyName = model.Mapping.Where(x => x.TableName == "Company" && x.ColumnName == "companyname").Count();
+                    creditDays = model.Mapping.Where(x => x.TableName == "Customer" && x.ColumnName == "creditdays").Count();
+                    gstNumber = model.Mapping.Where(x => x.TableName == "Company" && x.ColumnName == "gstnumber").Count();
+
+                    if (companyName == 0)
+                        requiredColumns.Add("Company Name");
+                    if (creditDays == 0)
+                        requiredColumns.Add("Credit Days");
+                    if (gstNumber == 0)
+                        requiredColumns.Add("GSTIN");
+
+                    if (requiredColumns.Count > 0)
+                    {
+                        errorResponseModel.WrongMapping = true;
+                        errorResponseModel.RequiredColumnName = requiredColumns;
+                        return errorResponseModel;
+                    }
+
+                    await ValidateCustomerImportModel(model, businessId, companys, companyDetails, customers, errorDatas, c_data, isSupplier, fileData);
+
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ImportSpecificationModel.ImportType, companys, 0, true));
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ImportSpecificationModel.ImportType, customers, 0, true));
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ImportSpecificationModel.ImportType, companyDetails, 0, true));
+                    break;
+					
+					
+					
+					
+					
+					
+					case ExcelImportType.Customer or ExcelImportType.Supplier:
+
+
+                    for (int row = 1; row <= fileData.Rows.Count; row++)
+                    {
+                        errorRow = 0;
+                        var company = new Company();
+                        var companyDetail = new CompanyDetail();
+                        var customer = new Customer();
+                        var user = new User();
+                        errorData = new List<EditErrorExcelDataModel>();
+
+                        for (int col = 1; col <= fileData.ColumnCount; col++)
+                        {
+                            var value = fileData.Rows[row - 1][col - 1];
+                            var data = model.ErrorModel[row -1];
+                            var excelColumn  = data.Data[col - 1].ExcelColumn;
+                            _commonService.CustomerValidation(ref errorRow, ref errorMessage, 0, company,
+                                companyDetail, customer, errorData, value, model.Mappings.FirstOrDefault(x => x.ExcelColumn == excelColumn));
+                        }
+                        await _commonService.CustomerDataEntity(businessId, companys, companyDetails, customers, errorDatas, AllCorrectData, isSupplier, errorRow, errorMessage, company, companyDetail, customer, errorData);
+                    }
+                    if (errorDatas.Count == 0 && AllCorrectData.Count == 0)
+                    {
+                        errorDatas.Add(new ErrorValidateExcelModel() { Data = new List<EditErrorExcelDataModel>(), Error = ErrorMessages.Error + ErrorMessages.NullDataError });
+                    }
+                    errorMessage = null;
+
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ExcelImportType, companys, 0, false));
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ExcelImportType, customers, 0, false));
+                    errorResponseModel.FilePaths.Add(await _fileService.TranferDataAsync(businessId, model.ExcelImportType, companyDetails, 0, false));
+
+
+
+companycompaymapping
+relation
+
+
+
+
+
+
+
+
+companycompaymapping add column status false=inactive true =active
+according to that in customers tbl = active inactive
+
+
+public const string CustomerAdded = "Customer added successfully";
+        public const string SupplierAdded = "Supplier added successfully";
+		
+		
+public async Task<Userdetail> GetUser(string phoneNumber)
+        {
+            if (phoneNumber.IsNullOrEmpty()) return null;
+            return await _userDetailRepository.GetEntityByConditionAsync(x => x.PhoneNumber == phoneNumber);
+
+
+        }
+        public async Task<Userdetail> CreateUser(Userdetail user)
+        {
+            if (user == null) return null;
+            await _userDetailRepository.AddEntityAsync(user);
+            return user;
+
+        }
+        public async Task CreateUserCompany(UserCompanyMapping usercompany)
+        {
+            if (usercompany == null) return; 
+            await _userCompanyMappingRepository.AddEntityAsync(usercompany);
+
+        }
+		298
+		8888877777
+		{
+    //condition 3: company and user both does not exist
+    "GstNumber":"29AOJPM9901K1ZC",
+    "CompanyPhoneNumber":"",
+    "UserPhoneNumber":"9191919190",
+    "DeviceToken":"",
+    "CompanyId":0,
+    "CreditDays":0,
+    "OutStandingAmount":0,
+    "CompanyName":"ICHCHHA ENTERPRISES",
+    "OwnerName":"SHAILESH SHAM  GUJAR"
+
+}
+
+
+Error Code: 1093. You can't specify target table 'users' for update in FROM clause
+
+
+
+copy_data_users
+userdetails_after_insert_trigger
+company_company_mapping after insert trigger
+
+INSERT INTO saakh_staging.users
+(id,phone_number,api_token,device_token,device_type,referral_code,last_selected_company,web_last_selected_company,status,json_data,register_from,called,document_sent,demo_scheduled,remark,contact_added,welcome_sent,created_at,updated_at,deleted_at)
+SELECT id,phone_number,api_token,device_token,device_type,referral_code,last_selected_company,web_last_selected_company,status,json_data,register_from,called,document_sent,demo_scheduled,remark,contact_added,welcome_sent,created_at,updated_at,deleted_at
+FROM userdetails WHERE id = NEW.id;
+
+
+customer -> agentcompanyId
+companies -> referralAgent
+//add views 
+            builder.Services.AddControllersWithViews();
+			 app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();  // Map API controllers
+
+            });
