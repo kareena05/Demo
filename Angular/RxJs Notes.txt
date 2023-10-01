@@ -11,6 +11,46 @@ scss me css chlta hai
 
 
 
+promises  vs obeservables
+
+1. promises returns resolve or reject
+  obs returns stream of data
+2. promises are async
+   obs can be async or sync
+
+
+whenever we use async it will always return a promise
+
+getdata.then(data=>console.log(data)) is same as getdata.then(console.log)
+
+to set the default child path you can use e mpty string
+ {path:'observables',component:ObservablesComponent,children:[
+    //like this {path:'',component:AllComponent}
+  ]}
+
+In Angular, @ViewChild is a decorator used to query and access child elements or components within a template or component class. It allows you to obtain a reference to a DOM element or an Angular component defined in the template and use it in your component code.
+
+elementref-> direct access to DOM element
+viewChild -> access to child elements and components
+
+ElementRef is a class provided by Angular that is used to obtain a reference to a DOM element in your Angular component. 
+ElementRef provides direct access to the DOM, manipulating the DOM directly is generally discouraged in Angular applications
+@ViewChild('myButton') is used to query for a DOM element with the template reference variable #myButton.
+
+The ngAfterViewInit method is a lifecycle hook in Angular that gets called after the view of the component has been initialized.
+ - good place to perform tasks that involve manipulating the DOM or interacting with elements in the view
+- because, at this point, the view and its child elements are ready and accessible.
+ fromEvent(this.addBtn.nativeElement,'click').subscribe(res=>
+      {console.log("btn clicked")});}
+
+foemevent fucntion ek observable create krta hai and 
+ It listens for the 'click' event on the addBtn.nativeElement
+
+-subscribe is where you define what happens when the 'click' event occurs. In
+const intervalVideos = interval(2000);
+const timerVideos = timer(2000,1000);
+timer starts after delayed seconds 2000(2 seconds) you specified
+interval starts immediately for every 1000 (1 second) you specified
 
 
 no seniors ->
